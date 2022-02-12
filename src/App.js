@@ -66,7 +66,7 @@ function App() {
                 </Link>
               </Nav>
               <BsPersonCircle />
-              Supercat &nbsp;
+              &nbsp; Supercat &nbsp;
               <BsFillCartFill className="text-light" />
               &nbsp;
               <span className="text-light"> 0 Items</span>&nbsp;

@@ -52,7 +52,7 @@ const Footer = () => (
     </div>
 
     <div className="footer-copyright text-center py-3">
-      © 2020 Copyright:
+      © 2022 Copyright:
       <a href="https://mdbootstrap.com/" style={{ textDecoration: "none" }}>
         &nbsp; OnWear.co.kr
       </a>
