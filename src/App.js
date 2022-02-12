@@ -11,17 +11,34 @@ import {
   ProgressBar,
   Table,
   Alert,
+  Button,
 } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Products from "./Pages/Products";
+import Footer from "./Pages/FooterRaw";
 import { BsFillCartFill } from "react-icons/bs";
 
+var now = new Date();
+var daycheck = now.getDate();
+if (String(daycheck).length < 2) {
+  daycheck = "0" + daycheck;
+}
+
+var mocheck = now.getMonth();
+if (String(mocheck).length < 2) {
+  mocheck = "0" + (mocheck + 1);
+}
+
+var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
+
 function App() {
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <Router>
       <div className="App">
-        <Navbar bg="dark" expand="lg" variant="dark">
+        <Navbar bg="dark" expand="lg" variant="dark" className="text-info">
           <Container>
             <Link to="/" className="text-decoration-none">
               <Navbar.Brand>
@@ -40,13 +57,28 @@ function App() {
                   Kart
                 </Link>
               </Nav>
+              Supercat:
+              <BsFillCartFill className="text-light" />
             </Navbar.Collapse>
-
-            <BsFillCartFill className="text-light" />
           </Container>
         </Navbar>
         <br />
+        <div className="d-flex justify-content-center ">
+          <h6 className="p-2 mb-0">Rounding Date </h6>
+          <input
+            type="date"
+            id="roundate"
+            name="roundate"
+            className="rounded"
+            defaultValue={today}
+          />
+          <Button variant="outline-success">Go</Button>{" "}
+        </div>
+
+        <br />
         <Products />
+        <br />
+        <Footer />
       </div>
     </Router>
   );
