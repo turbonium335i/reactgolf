@@ -17,7 +17,13 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Products from "./Pages/Products";
 import Footer from "./Pages/FooterRaw";
-import { BsFillCartFill } from "react-icons/bs";
+import {
+  BsFillCartFill,
+  BsSearch,
+  BsPersonCircle,
+  BsInstagram,
+  BsEasel,
+} from "react-icons/bs";
 
 var now = new Date();
 var daycheck = now.getDate();
@@ -50,15 +56,20 @@ function App() {
               <Nav className="me-auto">
                 <Link to="/" className="text-decoration-none nav-link">
                   {" "}
-                  ShowCase
+                  ShowCase &nbsp;
+                  <BsEasel />
                 </Link>
                 <Link to="/memo" className="text-decoration-none nav-link">
                   {" "}
-                  Kart
+                  Instagram &nbsp;
+                  <BsInstagram />
                 </Link>
               </Nav>
-              Supercat:
+              <BsPersonCircle />
+              Supercat &nbsp;
               <BsFillCartFill className="text-light" />
+              &nbsp;
+              <span className="text-light"> 0 Items</span>&nbsp;
             </Navbar.Collapse>
           </Container>
         </Navbar>
@@ -72,7 +83,9 @@ function App() {
             className="rounded"
             defaultValue={today}
           />
-          <Button variant="outline-success">Go</Button>{" "}
+          <Button variant="outline-primary">
+            <BsSearch />
+          </Button>{" "}
         </div>
 
         <br />
