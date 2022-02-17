@@ -47,7 +47,17 @@ function App() {
         <Navbar bg="dark" expand="lg" variant="dark" className="text-info">
           <Container>
             <Link to="/" className="text-decoration-none">
-              <Navbar.Brand>
+              <Navbar.Brand></Navbar.Brand>
+
+              <Navbar.Brand href="#home">
+                {/* <img
+                  alt=""
+                  src="https://i.postimg.cc/zftpFhs3/onwearcrop.png"
+                  // src="https://i.postimg.cc/J03CbD9s/kko.png"
+                  width="auto"
+                  height="30"
+                  className="d-inline-block align-top"
+                />{" "} */}
                 <span className="text-warning ">OnWear </span>Golf
               </Navbar.Brand>
             </Link>
@@ -75,6 +85,11 @@ function App() {
         </Navbar>
         <br />
         <div className="d-flex justify-content-center ">
+          <img
+            src="https://i.postimg.cc/zftpFhs3/onwearcrop.png"
+            height="30"
+            width="auto"
+          />
           <h6 className="p-2 mb-0">Rounding Date </h6>
           <input
             type="date"
