@@ -1,124 +1,103 @@
 import {
+  Navbar,
+  NavDropdown,
+  Nav,
+  Container,
+  Row,
+  Col,
+  ProgressBar,
   Table,
+  Alert,
   Card,
   Button,
-  Col,
-  Row,
   CardGroup,
-  Carousel,
 } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react";
+import AuthContext from "../Context/AuthContext";
+import { Link, useParams } from "react-router-dom";
 
-const Products = () => {
+const Products = ({ onAdd, items, mstat, messageback }) => {
+  let { user, logoutUser, authTokens } = useContext(AuthContext);
+
+  var groupOne = items.slice(0, 3);
+
+  let addToCart = async (id, title) => {
+    console.log("addtocart ", id);
+    onAdd(id);
+    mstat(title);
+    messageback(title + " added!");
+
+    if (1 === 1) {
+      fetch(`https://pertinacity1.pythonanywhere.com/addtokartapi`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+
+        body: JSON.stringify({
+          id: id,
+          user: "username here",
+          action: "add",
+        }),
+      });
+    }
+  };
+
   return (
-    <div className="container">
+    <div className="container  text-dark">
+      Products
       <CardGroup>
-        <Card>
-          <Card.Img
-            variant="top"
-            src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
-          />
-          <Card.Body>
-            <Card.Title>G FORE</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Img
-            variant="top"
-            src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"
-          />
-          <Card.Body>
-            <Card.Title>PXG</Card.Title>
-            <Card.Text>
-              This card has supporting text below as a natural lead-in to
-              additional content.{" "}
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Img
-            variant="top"
-            src="https://i.postimg.cc/Pq62ZpW0/titleist.jpg"
-          />
-          <Card.Body>
-            <Card.Title>Titleist</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <Card.Img
-            variant="top"
-            src="https://i.postimg.cc/63GQB83G/callaway.jpg"
-          />
-          <Card.Body>
-            <Card.Title>Callaway</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
-        </Card>
+        {groupOne.map((item) => (
+          <Card style={{ width: "18rem" }} key={item.id}>
+            <Link to={`/productdetail/${item.id}`}>
+              <Card.Img
+                variant="top"
+                src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
+              />
+            </Link>
+            <Card.Body className="">
+              <Card.Title>{item.title} </Card.Title>
+              <Card.Text>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </Card.Text>
+              <Button
+                variant="outline-success"
+                onClick={() => addToCart(item.id, item.title)}
+              >
+                Add to Cart
+              </Button>
+            </Card.Body>
+          </Card>
+        ))}
       </CardGroup>
       <br />
-
-      <Carousel variant="light">
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://i.postimg.cc/PJv3dX89/slider.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h5>First slide label</h5>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://i.postimg.cc/PJv3dX89/slider.jpg"
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-            <h5>Second slide label</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://i.postimg.cc/PJv3dX89/slider.jpg"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+      <CardGroup>
+        {items.map((item) => (
+          <Card style={{ width: "18rem" }} key={item.id}>
+            <Link to={`/productdetail/${item.id}`}>
+              <Card.Img
+                variant="top"
+                src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"
+              />
+            </Link>
+            <Card.Body className="">
+              <Card.Title>{item.title} </Card.Title>
+              <Card.Text>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+                {/* <Link to={`/productdetail/${item.id}`}>View Details</Link> */}
+                <Link to={`/productdetail/${item.id}`}>View Details</Link>
+              </Card.Text>
+              <Button
+                variant="outline-success"
+                onClick={() => addToCart(item.id)}
+              >
+                Add to Cart
+              </Button>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardGroup>
+      <br />
     </div>
   );
 };
