@@ -8,17 +8,7 @@ import "aos/dist/aos.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import {
-  Navbar,
-  NavDropdown,
-  Nav,
-  Container,
-  Row,
-  Col,
-  ProgressBar,
-  Table,
-  Alert,
-} from "react-bootstrap";
+import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
 
 import {
   BsFillCartFill,
@@ -65,6 +55,7 @@ function App() {
   const [success, setSuccess] = useState(false);
   const [messageInfo, setMessageInfo] = useState("0");
   const [queryDate, setQueryDate] = useState(today);
+  const [expanded, setExpanded] = useState(false);
 
   function timer() {
     setTimeout(() => {
@@ -138,6 +129,8 @@ function App() {
             variant="light"
             className="border-bottom border-danger"
             fixed="top"
+            collapseOnSelect
+            expanded={expanded}
           >
             <Container>
               <Link to="/" className="text-decoration-none">
@@ -152,16 +145,24 @@ function App() {
                   {/* <span className="text-warning ">OnWear</span>Shop */}
                 </Navbar.Brand>
               </Link>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Toggle
+                aria-controls="basic-navbar-nav"
+                onClick={() => setExpanded(expanded ? false : "expanded")}
+              />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                  <Link to="/" className="text-decoration-none nav-link">
+                  <Link
+                    to="/"
+                    className="text-decoration-none nav-link"
+                    onClick={() => setExpanded(false)}
+                  >
                     {" "}
                     Home
                   </Link>
                   <Link
                     to="/productbydate"
                     className="text-decoration-none nav-link"
+                    onClick={() => setExpanded(false)}
                   >
                     {" "}
                     RoundDate
@@ -173,32 +174,53 @@ function App() {
                   <Link
                     to="/products"
                     className="text-decoration-none nav-link"
+                    onClick={() => setExpanded(false)}
                   >
                     {" "}
                     Shop
                   </Link>
-                  <Link to="/cart" className="text-decoration-none nav-link">
+                  <Link
+                    to="/cart"
+                    className="text-decoration-none nav-link"
+                    onClick={() => setExpanded(false)}
+                  >
                     {" "}
                     Cart
                   </Link>
-                  <Link to="/signup" className="text-decoration-none nav-link">
+                  <Link
+                    to="/signup"
+                    className="text-decoration-none nav-link"
+                    onClick={() => setExpanded(false)}
+                  >
                     {" "}
                     SignUp
                   </Link>
                 </Nav>
                 <span className="text-warning">
-                  <Link to="/profile" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/profile"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => setExpanded(false)}
+                  >
                     <BsPersonCircle className="text-success" />{" "}
                   </Link>
                 </span>
                 &nbsp;{" "}
                 <span className="text-warning">
-                  <Link to="/profile" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/profile"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => setExpanded(false)}
+                  >
                     <UserID />
                   </Link>{" "}
                   &nbsp;
                 </span>
-                <Link to="/cart" style={{ textDecoration: "none" }}>
+                <Link
+                  to="/cart"
+                  style={{ textDecoration: "none" }}
+                  onClick={() => setExpanded(false)}
+                >
                   <BsFillCartFill className="text-primary" />
 
                   <span className="text-dark">

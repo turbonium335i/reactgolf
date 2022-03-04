@@ -79,7 +79,7 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
 
   return (
     <div className="container bg-light mb-3">
-      ProductDetail {itemNum}
+      {/* ProductDetail {itemNum} */}
       <div className="row">
         <div className="col-md-8  text-center pb-2">
           {" "}
@@ -141,7 +141,8 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
             className="img-fluid py-2"
             style={{ cursor: "pointer" }}
             onClick={() => {
-              window.location.href = "/productdetail/1";
+              window.scrollTo(0, 0);
+              // window.location.href = "/productdetail/1";
             }}
           />{" "}
         </div>
