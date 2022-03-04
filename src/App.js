@@ -137,6 +137,7 @@ function App() {
             expand="lg"
             variant="light"
             className="border-bottom border-danger"
+            fixed="top"
           >
             <Container>
               <Link to="/" className="text-decoration-none">
