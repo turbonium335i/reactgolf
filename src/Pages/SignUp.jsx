@@ -69,15 +69,9 @@ const SignUp = ({ mstat, messageback }) => {
   return (
     <div className="container">
       <form>
-        {" "}
-        <img
-          src="https://i.postimg.cc/zftpFhs3/onwearcrop.png"
-          height="30"
-          width="auto"
-          className="d-inline-block align-top"
-          data-aos="fade-up"
-        />
-        <h3 className="d-inline-block">&nbsp; Member Sign Up</h3>
+        <h3 className="d-inline-block mb-0 align-bottom">
+          OnWear Member Sign Up
+        </h3>
         <div className="form-group">
           <label>Username</label>
           <input
