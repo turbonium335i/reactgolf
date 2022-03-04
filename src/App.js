@@ -187,8 +187,8 @@ function App() {
                   </Link>
                 </Nav>
                 <span className="text-warning">
-                  <Link to="/profile">
-                    <BsPersonCircle />{" "}
+                  <Link to="/profile" style={{ textDecoration: "none" }}>
+                    <BsPersonCircle className="text-success" />{" "}
                   </Link>
                 </span>
                 &nbsp;{" "}
@@ -199,7 +199,7 @@ function App() {
                   &nbsp;
                 </span>
                 <Link to="/cart" style={{ textDecoration: "none" }}>
-                  <BsFillCartFill className="text-dark" />
+                  <BsFillCartFill className="text-primary" />
 
                   <span className="text-dark">
                     {" "}

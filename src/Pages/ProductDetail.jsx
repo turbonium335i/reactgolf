@@ -98,27 +98,29 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
           <h6>{task.price}</h6>
           <h6>{task.rentalprice}</h6>
           <br />
-          <DatePick DateOut={DateOut} />
-          <p className="text-success">
-            {startDate}--{endDate}
-          </p>
-          <Button
-            variant="outline-dark"
-            size="lg"
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            <BsFillArrowLeftCircleFill /> Back
-          </Button>
+          <div className="text-center">
+            <DatePick DateOut={DateOut} />
+            <p className="text-success">
+              {startDate}--{endDate}
+            </p>
+            <Button
+              variant="outline-dark"
+              size="lg"
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              <BsFillArrowLeftCircleFill /> Back
+            </Button>
 
-          <Button
-            variant="outline-success"
-            size="lg"
-            onClick={() => addToCart(task.id, task.title)}
-          >
-            Add to Cart
-          </Button>
+            <Button
+              variant="outline-success"
+              size="lg"
+              onClick={() => addToCart(task.id, task.title)}
+            >
+              Add to Cart
+            </Button>
+          </div>
           <br />
           <br />
         </div>
