@@ -1,5 +1,5 @@
 {
-  "short_name": "React App",
+  "short_name": "OnWear Golf",
   "name": "OnWear Golf",
   "icons": [
     {
@@ -8,7 +8,7 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://i.postimg.cc/zftpFhs3/onwearcrop.png",
       "type": "image/png",
       "sizes": "192x192"
     },
