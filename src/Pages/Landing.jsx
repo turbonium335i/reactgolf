@@ -70,7 +70,8 @@ const Landing = ({ rentDate }) => {
           <Card>
             <Card.Img
               variant="top"
-              src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
+              // src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
+              src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
             />
             <Card.Body>
               <Card.Title>G FORE</Card.Title>
@@ -103,7 +104,8 @@ const Landing = ({ rentDate }) => {
           <Card>
             <Card.Img
               variant="top"
-              src="https://i.postimg.cc/Pq62ZpW0/titleist.jpg"
+              src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
+              // src="https://i.postimg.cc/Pq62ZpW0/titleist.jpg"
             />
             <Card.Body>
               <Card.Title>BOTTOM</Card.Title>
@@ -120,7 +122,8 @@ const Landing = ({ rentDate }) => {
           <Card>
             <Card.Img
               variant="top"
-              src="https://i.postimg.cc/63GQB83G/callaway.jpg"
+              // src="https://i.postimg.cc/63GQB83G/callaway.jpg"
+              src="https://i.postimg.cc/j5dWrrkw/Quarter-G-s-Wrap-Skirt.jpg"
             />
             <Card.Body>
               <Card.Title>Accessories</Card.Title>
