@@ -121,6 +121,22 @@ const SignUp = ({ mstat, messageback }) => {
             id="password2"
           />
         </div>
+
+        <div className="form-check">
+          <br />
+          <p className="fw-bold">
+            I have read and agree to the following conditions:
+          </p>
+            <input type="checkbox" id="html" name="conditionOne" value="HTML" />
+            <label className="fw-bold">약관1 동의</label>
+          <br />
+            <input
+            type="checkbox"
+            id="css"
+            name="conditionTwo"
+            value="CSS"
+          />  <label className="fw-bold">약관2 동의</label>
+        </div>
         <br />
         <div>
           <span className="text-primary" onClick={toggle}>
@@ -625,6 +641,7 @@ const SignUp = ({ mstat, messageback }) => {
           <br />
           <br />
         </div>
+
         <div className="  text-center">
           <button
             type="button"
