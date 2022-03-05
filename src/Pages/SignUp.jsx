@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BsFillBookmarkStarFill } from "react-icons/bs";
+import {
+  BsFillXDiamondFill,
+  BsFillArrowDownSquareFill,
+  BsFillArrowUpSquareFill,
+} from "react-icons/bs";
 import { useState } from "react";
 
 const SignUp = ({ mstat, messageback }) => {
@@ -122,7 +126,7 @@ const SignUp = ({ mstat, messageback }) => {
           <span className="text-primary" onClick={toggle}>
             [필수] 이용약관 동의{" "}
             <h5 className="text-danger d-inline ">
-              <BsFillBookmarkStarFill />
+              <BsFillXDiamondFill />
             </h5>
           </span>
 
@@ -133,6 +137,12 @@ const SignUp = ({ mstat, messageback }) => {
               잡화(이하 제품이라 한다.) 대여 서비스, 전자상거래 관련 서비스 등
               온라인 상의 제반 서비스(이하 “서비스”라 한다.)를 이용함에 있어
               회사와 회원의 권리의무 및 책임사항을 규정함을 목적으로 합니다...
+              <span className="text-primary" onClick={toggle}>
+                View Details{" "}
+                <h5 className="text-danger d-inline ">
+                  <BsFillArrowDownSquareFill />
+                </h5>
+              </span>
             </div>
           ) : (
             <div className="container pt-2">
@@ -603,6 +613,12 @@ const SignUp = ({ mstat, messageback }) => {
                 할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는
                 유익한 쇼핑정보를 SMS나 이메일로 받아보실 수 있습니다.
               </p>
+              <span className="text-primary" onClick={toggle}>
+                Close{" "}
+                <h5 className="text-danger d-inline ">
+                  <BsFillArrowUpSquareFill />
+                </h5>
+              </span>
             </div>
           )}
 
