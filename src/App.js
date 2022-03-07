@@ -35,6 +35,7 @@ import FooterRaw from "./Components/FooterRaw";
 import Messagebox from "./Components/Messagebox";
 import CheckOut from "./Pages/CheckOut";
 import ProductByDate from "./Pages/ProductByDate";
+import SignUpLink from "./Pages/SignUpLink";
 
 var now = new Date();
 var daycheck = now.getDate();
@@ -97,7 +98,6 @@ function App() {
   };
 
   const onDelete = (id) => {
-    console.log(kart, id);
     setkart(kart.filter((k) => k !== id));
   };
 
@@ -187,14 +187,8 @@ function App() {
                     {" "}
                     Cart
                   </Link>
-                  <Link
-                    to="/signup"
-                    className="text-decoration-none nav-link"
-                    onClick={() => setExpanded(false)}
-                  >
-                    {" "}
-                    SignUp
-                  </Link>
+
+                  <SignUpLink />
                 </Nav>
                 <span className="text-warning">
                   <Link

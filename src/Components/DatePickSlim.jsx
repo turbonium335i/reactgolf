@@ -18,7 +18,6 @@ const DatePick = ({ DateOut }) => {
 
   const onChange = (date) => {
     setStartDate(date);
-    console.log(startDate);
   };
 
   return (
@@ -48,13 +47,10 @@ const DatePick = ({ DateOut }) => {
           addDays(startDate, 1),
         ]}
         excludeDates={[
-          // addDays(startDate, -4),
-          // addDays(startDate, -3),
-          // addDays(new Date(), 5),
-          new Date("03-25-2022"),
+          addDays(startDate, -4),
+          addDays(startDate, -3),
+          addDays(new Date(), 5),
         ]}
-        inline
-        minDate={new Date()}
       />
     </>
   );

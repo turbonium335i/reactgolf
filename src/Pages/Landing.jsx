@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import DatePickSlim from "../Components/DatePickSlim";
 
 var now = new Date();
 var daycheck = now.getDate();
@@ -41,6 +42,7 @@ const Landing = ({ rentDate }) => {
           width="auto"
         /> */}
         <h6 className="p-2 mb-0">Rounding Date </h6>
+        {/* <DatePickSlim /> */}
         <input
           type="date"
           id="roundate"
@@ -53,7 +55,7 @@ const Landing = ({ rentDate }) => {
         />{" "}
         <Link to={`/productbydate`}>
           <Button
-            variant="outline-primary"
+            variant="outline-success"
             onClick={() => {
               dateSubmit(RoundDate);
             }}

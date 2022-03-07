@@ -1,14 +1,6 @@
 import React from "react";
-import { BsSearch } from "react-icons/bs";
-import {
-  Table,
-  Card,
-  Button,
-  Col,
-  Row,
-  CardGroup,
-  Carousel,
-} from "react-bootstrap";
+import { BsSearch, BsArrowCounterclockwise } from "react-icons/bs";
+import { Table, Button } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -20,14 +12,21 @@ const ProductByDate = ({
   mstat,
   messageback,
 }) => {
-  var groupOne = items.slice(0, 3);
-  const itemdate = [32, 33, 16, 40];
-  const result = itemdate.filter(checkAdult);
-  console.log(result);
+  let [queryItems, setqueryItems] = useState(items);
 
-  function checkAdult(age) {
-    return age >= 18;
-  }
+  console.log(items);
+
+  var groupOne = items.slice(0, 3);
+
+  const clickTerm = (searchTerm) => {
+    if (searchTerm === "reset") {
+      setqueryItems(items);
+    } else {
+      setqueryItems(
+        items.filter((i) => i.brand.toLowerCase() === searchTerm.toLowerCase())
+      );
+    }
+  };
 
   let [RoundDate, setRoundDate] = useState(queryDate);
 
@@ -87,11 +86,24 @@ const ProductByDate = ({
         {/* <span className="text-danger mt-1 ms-2">{RoundDate}</span> */}
       </div>
       <div className="container text-center mt-2">
-        <Button variant="outline-primary">PXG</Button>{" "}
-        <Button variant="outline-primary">GFORE</Button>{" "}
-        <Button variant="outline-secondary">Acc</Button>{" "}
-        <Button variant="outline-secondary">Top</Button>{" "}
-        <Button variant="outline-secondary">Bottom</Button>
+        <Button variant="outline-primary" onClick={() => clickTerm("PXG")}>
+          PXG
+        </Button>{" "}
+        <Button variant="outline-primary" onClick={() => clickTerm("gfore")}>
+          GFORE
+        </Button>{" "}
+        <Button variant="outline-secondary" onClick={() => clickTerm("gfore")}>
+          Acc
+        </Button>{" "}
+        <Button variant="outline-secondary" onClick={() => clickTerm("gfore")}>
+          Top
+        </Button>{" "}
+        <Button variant="outline-secondary" onClick={() => clickTerm("reset")}>
+          Bottom
+        </Button>
+        <Button variant="outline-primary" onClick={() => clickTerm("reset")}>
+          <BsArrowCounterclockwise />
+        </Button>
       </div>
       <br />
       <h5 className="text-center"> Round Date: {queryDate}</h5>
@@ -107,7 +119,7 @@ const ProductByDate = ({
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
+          {queryItems.map((item, index) => (
             <tr key={item.id}>
               {/* <td>{index + 1}</td> */}
               <td className="text-center">
