@@ -119,6 +119,10 @@ function App() {
     console.log(info);
   };
 
+  const closeNav = () => {
+    setExpanded(false);
+  };
+
   return (
     <Router>
       <AuthProvider>
@@ -190,7 +194,7 @@ function App() {
                     Cart
                   </Link>
 
-                  <SignUpLink />
+                  <SignUpLink closeNav={closeNav} />
                 </Nav>
                 <span className="text-warning">
                   <Link
