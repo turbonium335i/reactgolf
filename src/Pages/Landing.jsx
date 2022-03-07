@@ -70,11 +70,14 @@ const Landing = ({ rentDate }) => {
         {" "}
         <CardGroup>
           <Card>
-            <Card.Img
-              variant="top"
-              // src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
-              src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
-            />
+            {" "}
+            <Link to={"/productbydate"} state={"pxg"}>
+              <Card.Img
+                variant="top"
+                // src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
+                src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
+              />{" "}
+            </Link>
             <Card.Body>
               <Card.Title>G FORE</Card.Title>
               <Card.Text>
@@ -87,12 +90,15 @@ const Landing = ({ rentDate }) => {
               <small className="text-muted">Last updated 3 mins ago</small>
             </Card.Footer>
           </Card>
+
           <Card>
-            <Card.Img
-              variant="top"
-              // src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"
-              src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
-            />
+            <Link to={"/productbydate"} state={"gfore"}>
+              <Card.Img
+                variant="top"
+                // src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"
+                src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
+              />{" "}
+            </Link>
             <Card.Body>
               <Card.Title>TOPS</Card.Title>
               <Card.Text>
@@ -105,11 +111,14 @@ const Landing = ({ rentDate }) => {
             </Card.Footer>
           </Card>
           <Card>
-            <Card.Img
-              variant="top"
-              src="https://i.postimg.cc/j5dWrrkw/Quarter-G-s-Wrap-Skirt.jpg"
-              // src="https://i.postimg.cc/Pq62ZpW0/titleist.jpg"
-            />
+            {" "}
+            <Link to={"/productbydate"} state={"reset"}>
+              <Card.Img
+                variant="top"
+                src="https://i.postimg.cc/j5dWrrkw/Quarter-G-s-Wrap-Skirt.jpg"
+                // src="https://i.postimg.cc/Pq62ZpW0/titleist.jpg"
+              />{" "}
+            </Link>
             <Card.Body>
               <Card.Title>BOTTOM</Card.Title>
               <Card.Text>
@@ -123,11 +132,13 @@ const Landing = ({ rentDate }) => {
             </Card.Footer>
           </Card>
           <Card>
-            <Card.Img
-              variant="top"
-              // src="https://i.postimg.cc/63GQB83G/callaway.jpg"
-              src="https://i.postimg.cc/X7TQN2W7/hat2-2.jpg"
-            />
+            <Link to={"/productbydate"} state={"reset"}>
+              <Card.Img
+                variant="top"
+                // src="https://i.postimg.cc/63GQB83G/callaway.jpg"
+                src="https://i.postimg.cc/X7TQN2W7/hat2-2.jpg"
+              />
+            </Link>
             <Card.Body>
               <Card.Title>Accessories</Card.Title>
               <Card.Text>

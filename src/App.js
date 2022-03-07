@@ -61,7 +61,7 @@ function App() {
   function timer() {
     setTimeout(() => {
       setSuccess(false);
-    }, 2000);
+    }, 2500);
   }
 
   useEffect(() => {
@@ -132,6 +132,8 @@ function App() {
             collapseOnSelect
             expanded={expanded}
           >
+            {" "}
+            {success && <Messagebox mstat={mstat} messageInfo={messageInfo} />}
             <Container>
               <Link to="/" className="text-decoration-none">
                 <Navbar.Brand>
@@ -226,7 +228,7 @@ function App() {
               </Navbar.Collapse>
             </Container>
           </Navbar>
-          {success && <Messagebox mstat={mstat} messageInfo={messageInfo} />}
+
           <br />
           <div className="text-center">
             {" "}

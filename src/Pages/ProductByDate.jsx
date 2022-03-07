@@ -2,7 +2,7 @@ import React from "react";
 import { BsSearch, BsArrowCounterclockwise } from "react-icons/bs";
 import { Table, Button } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ProductByDate = ({
   queryDate,
@@ -14,11 +14,21 @@ const ProductByDate = ({
 }) => {
   let [queryItems, setqueryItems] = useState(items);
 
+  const location = useLocation();
+  const state = location.state;
+  console.log(state);
+
+  useEffect(() => {
+    if (state !== null) {
+      clickTerm(state);
+    }
+  }, []);
+
   console.log(items);
 
   var groupOne = items.slice(0, 3);
 
-  const clickTerm = (searchTerm) => {
+  function clickTerm(searchTerm) {
     if (searchTerm === "reset") {
       setqueryItems(items);
     } else {
@@ -26,7 +36,7 @@ const ProductByDate = ({
         items.filter((i) => i.brand.toLowerCase() === searchTerm.toLowerCase())
       );
     }
-  };
+  }
 
   let [RoundDate, setRoundDate] = useState(queryDate);
 
