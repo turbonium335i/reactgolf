@@ -5,9 +5,13 @@ import {
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,
 } from "react-icons/bs";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 const SignUp = ({ mstat, messageback }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   let [terms, setTerms] = useState(true);
 
   let navigate = useNavigate();

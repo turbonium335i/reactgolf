@@ -19,6 +19,8 @@ const ProductByDate = ({
   console.log(state);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (state !== null) {
       clickTerm(state);
     }

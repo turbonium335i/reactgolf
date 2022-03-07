@@ -5,6 +5,9 @@ import { Link, useParams } from "react-router-dom";
 
 const Products = ({ onAdd, items, mstat, messageback }) => {
   let { user, logoutUser, authTokens } = useContext(AuthContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   var groupOne = items.slice(0, 3);
 

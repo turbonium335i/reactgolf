@@ -27,6 +27,10 @@ if (String(mocheck).length < 2) {
 var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
 const Landing = ({ rentDate }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   let [RoundDate, setRoundDate] = useState(today);
 
   function dateSubmit(subdate) {

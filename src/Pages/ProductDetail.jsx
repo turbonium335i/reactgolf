@@ -68,6 +68,8 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
     // };
     // fetchTask();
 
+    window.scrollTo(0, 0);
+
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == params.id) {
         setTask(items[i]);
