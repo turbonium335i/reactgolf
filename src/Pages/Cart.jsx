@@ -17,6 +17,10 @@ import { Link } from "react-router-dom";
 const Cart = ({ items, kart, onDelete }) => {
   var shopKart = [];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   for (var i = 0; i < items.length; i++) {
     if (kart.includes(items[i].id)) {
       shopKart.push(items[i]);
