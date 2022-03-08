@@ -96,7 +96,7 @@ const Landing = ({ rentDate }) => {
           </Card>
 
           <Card>
-            <Link to={"/productbydate"} state={"gfore"}>
+            <Link to={"/productbydate"} state={"G/FORE"}>
               <Card.Img
                 variant="top"
                 // src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"

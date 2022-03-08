@@ -101,13 +101,13 @@ const ProductByDate = ({
         <Button variant="outline-primary" onClick={() => clickTerm("PXG")}>
           PXG
         </Button>{" "}
-        <Button variant="outline-primary" onClick={() => clickTerm("gfore")}>
+        <Button variant="outline-primary" onClick={() => clickTerm("G/FORE")}>
           GFORE
         </Button>{" "}
-        <Button variant="outline-secondary" onClick={() => clickTerm("gfore")}>
+        <Button variant="outline-secondary" onClick={() => clickTerm("G/FORE")}>
           Acc
         </Button>{" "}
-        <Button variant="outline-secondary" onClick={() => clickTerm("gfore")}>
+        <Button variant="outline-secondary" onClick={() => clickTerm("G/FORE")}>
           Top
         </Button>{" "}
         <Button variant="outline-secondary" onClick={() => clickTerm("reset")}>
