@@ -61,7 +61,7 @@ function App() {
   function timer() {
     setTimeout(() => {
       setSuccess(false);
-    }, 2500);
+    }, 2200);
   }
 
   useEffect(() => {

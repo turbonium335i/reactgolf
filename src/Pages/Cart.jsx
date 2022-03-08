@@ -12,10 +12,11 @@ import {
 } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = ({ items, kart, onDelete }) => {
   var shopKart = [];
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,6 +25,12 @@ const Cart = ({ items, kart, onDelete }) => {
   for (var i = 0; i < items.length; i++) {
     if (kart.includes(items[i].id)) {
       shopKart.push(items[i]);
+    }
+  }
+
+  function goToKart() {
+    if (kart.length !== 0) {
+      navigate("/checkout");
     }
   }
 
@@ -83,11 +90,16 @@ const Cart = ({ items, kart, onDelete }) => {
             Continue Shopping
           </Button>{" "}
         </Link>
-        <Link to={`/checkout`}>
-          <Button variant="success" size="lg">
-            CheckOut
-          </Button>
-        </Link>
+
+        <Button
+          variant="success"
+          size="lg"
+          onClick={() => {
+            goToKart();
+          }}
+        >
+          CheckOut
+        </Button>
       </div>
       <br />
       <div className="text-secondary text-end">
