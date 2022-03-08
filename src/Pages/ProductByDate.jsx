@@ -98,11 +98,11 @@ const ProductByDate = ({
         {/* <span className="text-danger mt-1 ms-2">{RoundDate}</span> */}
       </div>
       <div className="container text-center mt-2">
+        <Button variant="outline-primary" onClick={() => clickTerm("G/FORE")}>
+          G/FORE
+        </Button>{" "}
         <Button variant="outline-primary" onClick={() => clickTerm("PXG")}>
           PXG
-        </Button>{" "}
-        <Button variant="outline-primary" onClick={() => clickTerm("G/FORE")}>
-          GFORE
         </Button>{" "}
         <Button variant="outline-secondary" onClick={() => clickTerm("G/FORE")}>
           Acc
@@ -126,7 +126,7 @@ const ProductByDate = ({
             <th className="col-2 text-center">Image</th>
             <th>Product Name</th>
             {/* <th>Description</th> */}
-            <th className="col-1">Size</th>
+            <th className="col-1 text-center">Size</th>
             <th>Price</th>
           </tr>
         </thead>
@@ -137,32 +137,33 @@ const ProductByDate = ({
               <td className="text-center">
                 <Link to={`/productdetail/${item.id}`}>
                   <img
-                    src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
+                    src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
                     height="60vh"
                     width="auto"
                   />
                 </Link>
               </td>
               <td>
-                {item.title} <br />{" "}
+                <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
+                <br />{" "}
                 <span className="text-secondary">
                   {" "}
                   {item.description_short}
                 </span>
               </td>
               {/* <td>{item.description_short}</td> */}
-              <td>
+              <td className="text-center">
                 {item.size === "s" ? (
-                  <Button variant="secondary" size="sm">
+                  <Button variant="outline-dark" size="sm">
                     {item.size}
                   </Button>
                 ) : (
-                  <Button variant="primary" size="sm">
+                  <Button variant="outline-primary" size="sm">
                     {item.size}
                   </Button>
                 )}
               </td>
-              <td>{item.rentalprice}</td>
+              <td>{item.rentalprice.toLocaleString()}</td>
             </tr>
           ))}
         </tbody>

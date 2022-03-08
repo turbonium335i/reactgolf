@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import NumberFormat from "react-number-format";
 
 import DatePick from "../Components/DatePick";
 import moment from "moment";
@@ -86,19 +87,48 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
         <div className="col-md-8  text-center pb-2">
           {" "}
           <img
-            src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
+            src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
+            className="img-fluid py-2"
+          />{" "}
+          <img
+            src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
             className="img-fluid py-2"
           />
         </div>
         <div className="col-md-4   pb-2">
-          <h1>{task.title}</h1>
+          <h2>{task.title}</h2>
+
           <h6>
-            {task.brand} / id: {task.id}
+            {task.brand} -{" "}
+            <span className="text-secondary">
+              {" "}
+              {task.modelname}_{task.id}
+            </span>
+            <br />
           </h6>
+          <br />
           <h6>{task.description_long}</h6>
+          <br />
           <h6>{task.description_short}</h6>
-          <h6>{task.price}</h6>
-          <h6>{task.rentalprice}</h6>
+          <br />
+          <h6 className="text-secondary">
+            Retail Price:{" "}
+            <NumberFormat
+              value={task.price}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"₩"}
+            />
+          </h6>
+          <h5 className="text-success">
+            Rental Price:{" "}
+            <NumberFormat
+              value={task.rentalprice}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"₩"}
+            />
+          </h5>
           <br />
           <div className="text-center">
             <DatePick DateOut={DateOut} />
