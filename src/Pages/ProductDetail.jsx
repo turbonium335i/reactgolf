@@ -93,7 +93,7 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
         <div className="col-md-4   pb-2">
           <h1>{task.title}</h1>
           <h6>
-            {task.modelname} / id: {task.id}
+            {task.brand} / id: {task.id}
           </h6>
           <h6>{task.description_long}</h6>
           <h6>{task.description_short}</h6>
