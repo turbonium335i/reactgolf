@@ -13,6 +13,7 @@ import {
 import { useContext, useState, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const Cart = ({ items, kart, onDelete }) => {
   var shopKart = [];
@@ -41,7 +42,7 @@ const Cart = ({ items, kart, onDelete }) => {
           <tr>
             <th className="col-1">#</th>
             <th className="col-2">Image</th>
-            <th>Product Name</th>
+            <th> Name</th>
             {/* <th>Description</th> */}
             <th className="col-1">Size</th>
             <th>Price</th>
@@ -62,16 +63,26 @@ const Cart = ({ items, kart, onDelete }) => {
                 </Link>
               </td>
               <td>
-                {item.title} <br />{" "}
-                <span className="text-secondary">
-                  {" "}
-                  {item.description_short}
-                </span>
+                {" "}
+                <Link
+                  to={`/productdetail/${item.id}`}
+                  className="text-decoration-none"
+                >
+                  <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
+                  <br /> <span className="text-secondary"> </span>
+                </Link>
               </td>
               {/* <td>{item.description_short}</td> */}
               <td>{item.size}</td>
-              <td>{item.rentalprice}</td>
               <td>
+                <NumberFormat
+                  value={item.rentalprice}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"₩"}
+                />
+              </td>
+              <td className="text-center">
                 <Button
                   variant="outline-danger"
                   size="sm"

@@ -137,7 +137,8 @@ const ProductByDate = ({
               <td className="text-center">
                 <Link to={`/productdetail/${item.id}`}>
                   <img
-                    src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
+                    // src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
+                    src={item.imglink}
                     height="60vh"
                     width="auto"
                   />

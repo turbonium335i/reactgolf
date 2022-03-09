@@ -69,7 +69,9 @@ const Landing = ({ rentDate }) => {
         </Link>{" "}
         {/* <span className="text-danger mt-1 ms-2">{RoundDate}</span> */}
       </div>
-
+      <h5 className="text-center pt-3">
+        Golf with Style. OnWear Premium Rentals.
+      </h5>
       <div className="container mt-2">
         {" "}
         <CardGroup>
@@ -86,8 +88,7 @@ const Landing = ({ rentDate }) => {
               <Card.Title>New Arrivals</Card.Title>
               <Card.Text>
                 This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                lead-in to additional content.
               </Card.Text>
             </Card.Body>
             <Card.Footer>

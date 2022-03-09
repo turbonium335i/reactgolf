@@ -129,7 +129,7 @@ function App() {
         <div className="App">
           <Navbar
             bg="light"
-            expand="lg"
+            expand="md"
             variant="light"
             className="border-bottom border-danger"
             fixed="top"

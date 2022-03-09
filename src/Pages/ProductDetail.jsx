@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { BsFillArrowLeftCircleFill, BsPlusLg } from "react-icons/bs";
 import NumberFormat from "react-number-format";
 
 import DatePick from "../Components/DatePick";
@@ -84,20 +84,8 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
     <div className="container bg-light mb-3">
       {/* ProductDetail {itemNum} */}
       <div className="row">
-        <div className="col-md-8  text-center pb-2">
-          {" "}
-          <img
-            src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
-            className="img-fluid py-2"
-          />{" "}
-          <img
-            src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
-            className="img-fluid py-2"
-          />
-        </div>
-        <div className="col-md-4   pb-2">
+        <div className="col-md-8  pb-2">
           <h2>{task.title}</h2>
-
           <h6>
             {task.brand} -{" "}
             <span className="text-secondary">
@@ -105,12 +93,19 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
               {task.modelname}_{task.id}
             </span>
             <br />
-          </h6>
-          <br />
-          <h6>{task.description_long}</h6>
-          <br />
-          <h6>{task.description_short}</h6>
-          <br />
+          </h6>{" "}
+          <img
+            // src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
+            src={task.imglink}
+            className="img-fluid py-2 "
+          />{" "}
+          <img
+            // src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
+            src={task.imglinkTwo}
+            className="img-fluid py-2"
+          />
+        </div>
+        <div className="col-md-4   pb-2">
           <h6 className="text-secondary">
             Retail Price:{" "}
             <NumberFormat
@@ -150,9 +145,16 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
               size="lg"
               onClick={() => addToCart(task.id, task.title)}
             >
-              Add to Cart
+              <BsPlusLg /> Cart
             </Button>
           </div>
+
+          <br />
+          <h6>{task.description_long}</h6>
+          <br />
+          <h6>{task.description_short}</h6>
+          <br />
+
           <br />
           <br />
         </div>
@@ -181,7 +183,7 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
         <div className="col-4">
           {" "}
           <Link to={`/productdetail/2`}>
-            <img src={task.imglink} className="img-fluid py-2" />
+            <img src={task.imglinkTwo} className="img-fluid py-2" />
           </Link>
         </div>
       </div>
