@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
-import SignUp from "../Pages/SignUp";
 import { Link, useNavigate } from "react-router-dom";
-import KakaoLogin from "react-kakao-login";
 import { Button } from "react-bootstrap";
+import SocialLogin from "../Components/SocialLogin";
+import { BsFillPersonCheckFill } from "react-icons/bs";
 
 const Login = ({ mstat, messageback }) => {
   let { loginUser } = useContext(AuthContext);
@@ -19,13 +19,20 @@ const Login = ({ mstat, messageback }) => {
       <h1 className="text-secondary">Login</h1>
 
       <form onSubmit={loginUser}>
-        <input type="text" id="fname" name="username" placeholder="Username" />{" "}
+        <input
+          type="text"
+          id="fname"
+          name="username"
+          placeholder="Username"
+          className="my-2"
+        />{" "}
         &nbsp;
         <input
           type="password"
           id="lname"
           name="password"
           placeholder="Password"
+          className="my-2"
         />
         &nbsp;
         <input
@@ -41,19 +48,14 @@ const Login = ({ mstat, messageback }) => {
       <div>
         <Link to="/signup" className="text-decoration-none ">
           <Button variant="outline-success" size="lg" className="mb-2">
-            Sign Up
+            <BsFillPersonCheckFill />
+            &nbsp; Sign Up
           </Button>
-          &nbsp;&nbsp;
+          &nbsp;
         </Link>{" "}
-        <KakaoLogin
-          token={"4fbdfe3fa7422dc14858faeed558492c"}
-          onSuccess={console.log}
-          onFail={() => {
-            kakaoOkay();
-          }}
-          onLogout={console.info}
-          useLoginForm
-        />{" "}
+        <Button variant="warning" size="lg" className="mb-2">
+          <SocialLogin />
+        </Button>
       </div>
     </div>
   );
