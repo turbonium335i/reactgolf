@@ -145,12 +145,17 @@ const ProductByDate = ({
                 </Link>
               </td>
               <td>
-                <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
-                <br />{" "}
-                <span className="text-secondary">
-                  {" "}
-                  {item.description_short}
-                </span>
+                <Link
+                  to={`/productdetail/${item.id}`}
+                  className="text-decoration-none text-dark"
+                >
+                  <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
+                  <br />{" "}
+                  <span className="text-secondary">
+                    {" "}
+                    {item.description_short}
+                  </span>{" "}
+                </Link>
               </td>
               {/* <td>{item.description_short}</td> */}
               <td className="text-center">
