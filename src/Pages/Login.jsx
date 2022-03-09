@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 import SignUp from "../Pages/SignUp";
 import { Link } from "react-router-dom";
+import KakaoLogin from "react-kakao-login";
 
 const Login = ({ mstat, messageback }) => {
   let { loginUser } = useContext(AuthContext);
@@ -39,6 +40,11 @@ const Login = ({ mstat, messageback }) => {
       <Link to="/signup" className="text-decoration-none ">
         <h1 className="text-secondary">Sign Up</h1>
       </Link>
+
+      <KakaoLogin
+        token={"4fbdfe3fa7422dc14858faeed558492c"}
+        onSuccess={console.log}
+      />
     </div>
   );
 };
