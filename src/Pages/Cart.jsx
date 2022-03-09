@@ -55,11 +55,7 @@ const Cart = ({ items, kart, onDelete }) => {
               <td>{index + 1}</td>
               <td>
                 <Link to={`/productdetail/${item.id}`}>
-                  <img
-                    src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
-                    height="55"
-                    width="auto"
-                  />
+                  <img src={item.imglink} height="60vh" width="auto" />
                 </Link>
               </td>
               <td>
@@ -96,7 +92,7 @@ const Cart = ({ items, kart, onDelete }) => {
         </tbody>
       </Table>
       <div className="d-flex justify-content-end gap-2">
-        <Link to={`/products`}>
+        <Link to={`/productbydate`}>
           <Button variant="secondary" size="lg">
             Continue Shopping
           </Button>{" "}
