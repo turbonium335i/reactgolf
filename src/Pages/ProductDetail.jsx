@@ -1,7 +1,11 @@
 import { Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
-import { BsFillArrowLeftCircleFill, BsPlusLg } from "react-icons/bs";
+import {
+  BsFillArrowLeftCircleFill,
+  BsPlusLg,
+  BsFillCartPlusFill,
+} from "react-icons/bs";
 import NumberFormat from "react-number-format";
 
 import DatePick from "../Components/DatePick";
@@ -11,6 +15,9 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
   const [loading, setLoading] = useState(true);
   const [task, setTask] = useState({});
   const [error, setError] = useState(null);
+
+  const [tagOne, setTagOne] = useState("1");
+  const [tagTwo, setTagTwo] = useState("1");
 
   const params = useParams();
   const navigate = useNavigate();
@@ -75,8 +82,16 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
       if (items[i].id == params.id) {
         setTask(items[i]);
       }
+      if (items[i].id == task.tagWith) {
+        setTagOne(items[i]);
+      }
+      if (items[i].id == task.tagWithTwo) {
+        setTagTwo(items[i]);
+      }
     }
   });
+
+  console.log(tagOne);
 
   // prevent render each time }, []);
 
@@ -145,7 +160,7 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
               size="lg"
               onClick={() => addToCart(task.id, task.title)}
             >
-              <BsPlusLg /> Cart
+              <BsFillCartPlusFill /> Cart
             </Button>
           </div>
 
@@ -164,8 +179,8 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
       <div className="row border border-light pb-2">
         <div className="col-4">
           {" "}
-          <Link to={`/productdetail/1`}>
-            <img src={task.imglink} className="img-fluid py-2" />
+          <Link to={`/productdetail/${task.tagWith}`}>
+            <img src={tagOne.imglink} className="img-fluid py-2" />
           </Link>
         </div>
         <div className="col-4">
@@ -182,8 +197,8 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
         </div>
         <div className="col-4">
           {" "}
-          <Link to={`/productdetail/2`}>
-            <img src={task.imglinkTwo} className="img-fluid py-2" />
+          <Link to={`/productdetail/${task.tagWithTwo}`}>
+            <img src={tagTwo.imglink} className="img-fluid py-2" />
           </Link>
         </div>
       </div>

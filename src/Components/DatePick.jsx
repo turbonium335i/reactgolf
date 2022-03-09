@@ -55,6 +55,7 @@ const DatePick = ({ DateOut }) => {
         ]}
         inline
         minDate={new Date()}
+        maxDate={addDays(new Date(), 21)}
       />
     </>
   );
