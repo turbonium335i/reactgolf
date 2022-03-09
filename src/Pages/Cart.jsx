@@ -46,7 +46,7 @@ const Cart = ({ items, kart, onDelete }) => {
             {/* <th>Description</th> */}
             <th className="col-1">Size</th>
             <th>Price</th>
-            <th className="col-1">Remove</th>
+            <th className="col-1 text-center">X</th>
           </tr>
         </thead>
         <tbody>
