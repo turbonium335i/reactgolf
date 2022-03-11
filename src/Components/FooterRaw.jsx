@@ -8,6 +8,8 @@ import {
 
 const Footer = () => (
   <footer className="page-footer font-small blue pt-4">
+    <br />
+    <br />
     <div className="container-fluid text-center text-md-left">
       <div className="row">
         <div className="col-md-6 mt-md-0 mt-3">

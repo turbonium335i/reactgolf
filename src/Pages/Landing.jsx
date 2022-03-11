@@ -85,11 +85,10 @@ const Landing = ({ rentDate }) => {
               />{" "}
             </Link>
             <Card.Body>
-              <Card.Title>New Arrivals</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content.
-              </Card.Text>
+              <Card.Title className="container text-center">
+                New Arrivals
+              </Card.Title>
+              <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
@@ -105,11 +104,8 @@ const Landing = ({ rentDate }) => {
               />{" "}
             </Link>
             <Card.Body>
-              <Card.Title>TOPS</Card.Title>
-              <Card.Text>
-                This card has supporting text below as a natural lead-in to
-                additional content.{" "}
-              </Card.Text>
+              <Card.Title className="container text-center">TOPS</Card.Title>
+              <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
@@ -125,12 +121,8 @@ const Landing = ({ rentDate }) => {
               />{" "}
             </Link>
             <Card.Body>
-              <Card.Title>BOTTOM</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
-              </Card.Text>
+              <Card.Title className="container text-center">BOTTOM</Card.Title>
+              <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
@@ -145,12 +137,10 @@ const Landing = ({ rentDate }) => {
               />
             </Link>
             <Card.Body>
-              <Card.Title>Accessories</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
-              </Card.Text>
+              <Card.Title className="container text-center">
+                Accessories
+              </Card.Title>
+              <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">Last updated 3 mins ago</small>
@@ -158,6 +148,13 @@ const Landing = ({ rentDate }) => {
           </Card>
         </CardGroup>
         <br />
+        <div className="container text-center">
+          {" "}
+          <img
+            src="https://i.postimg.cc/Sskgmxkc/howto.png"
+            className="img-fluid py-2 "
+          />{" "}
+        </div>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
     setEndDate(moment(e).format("MM-DD-YYYY"));
     // console.log(s.toDateString());
     // console.log(s.toLocaleString());
-    console.log(moment(s).format("MM-DD-YYYY"));
+    // console.log(moment(s).format("MM-DD-YYYY"));
   }
 
   let addToCart = async (id, title) => {
@@ -90,8 +90,6 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
       }
     }
   });
-
-  console.log(tagOne);
 
   // prevent render each time }, []);
 

@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import DatePick from "../Components/DatePick";
 import moment from "moment";
+import { Button } from "react-bootstrap";
 
 const Profile = () => {
   let { user, logoutUser } = useContext(AuthContext);
@@ -10,13 +11,13 @@ const Profile = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  function DateOut(s, e) {
-    setStartDate(moment(s).format("MM-DD-YYYY"));
-    setEndDate(moment(e).format("MM-DD-YYYY"));
-    // console.log(s.toDateString());
-    // console.log(s.toLocaleString());
-    console.log(moment(s).format("MM-DD-YYYY"));
-  }
+  // function DateOut(s, e) {
+  //   setStartDate(moment(s).format("MM-DD-YYYY"));
+  //   setEndDate(moment(e).format("MM-DD-YYYY"));
+  //   // console.log(s.toDateString());
+  //   // console.log(s.toLocaleString());
+  //   console.log(moment(s).format("MM-DD-YYYY"));
+  // }
 
   useEffect(() => {
     getHistory();
@@ -45,24 +46,28 @@ const Profile = () => {
   return (
     <div className="container text-dark">
       <div className="text-center pt-5">
-        <DatePick DateOut={DateOut} />
-        <p className="text-success">
-          {startDate}--{endDate}
-        </p>
+        {/* <DatePick DateOut={DateOut} /> */}
+        {/* <p className="text-success">
+          {startDate}--{endDate}z
+        </p> */}
+        *
       </div>
       <p
         onClick={logoutUser}
         style={{ cursor: "pointer", color: "red" }}
-        className="text-end"
+        className="text-end  "
       >
-        LogOut
+        <Button variant="outline-danger">LogOut</Button>
       </p>
       Member Profile
       {user ? (
-        <h1 className="text-secondary">
-          {user.username}
-          {"'s Order History"}
-        </h1>
+        <div>
+          <h1 className="text-dark">
+            {user.first_name}
+            {"'s Order History"}
+          </h1>{" "}
+          <h5 className="text-secondary"> {user.username}</h5>{" "}
+        </div>
       ) : (
         <h1 className="text-secondary">Guest</h1>
       )}

@@ -26,7 +26,7 @@ const ProductByDate = ({
     }
   }, []);
 
-  console.log(items);
+  // console.log(items);
 
   var groupOne = items.slice(0, 3);
 

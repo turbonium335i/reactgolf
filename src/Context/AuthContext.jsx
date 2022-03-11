@@ -22,11 +22,44 @@ export const AuthProvider = ({ children }) => {
 
   let navigate = useNavigate();
 
+  let kakaoUser = async (x, email) => {
+    console.log("form submitted", x, email);
+    let response = await fetch(
+      "https://pertinacity1.pythonanywhere.com/token/",
+      // "http://127.0.0.1:8000/token/",
+
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: email,
+          password: "kaka1010",
+        }),
+      }
+    );
+    let data = await response.json();
+    console.log(data);
+
+    if (response.status === 200) {
+      setAuthTokens(data);
+      setUser(jwt_decode(data.access));
+      localStorage.setItem("authTokens", JSON.stringify(data));
+      navigate("/profile");
+    } else {
+      console.log("Authentication Error!");
+      return "no user";
+    }
+  };
+
   let loginUser = async (e) => {
     e.preventDefault();
     console.log("form submitted");
     let response = await fetch(
       "https://pertinacity1.pythonanywhere.com/token/",
+      // "http://127.0.0.1:8000/token/",
+
       {
         method: "POST",
         headers: {
@@ -63,6 +96,7 @@ export const AuthProvider = ({ children }) => {
 
     let response = await fetch(
       "https://pertinacity1.pythonanywhere.com/token/refresh/",
+      // "http://127.0.0.1:8000/token/refresh/",
       {
         method: "POST",
         headers: {
@@ -90,6 +124,7 @@ export const AuthProvider = ({ children }) => {
   let contextData = {
     loginUser: loginUser,
     logoutUser: logoutUser,
+    kakaoUser: kakaoUser,
     user: user,
     authTokens: authTokens,
   };

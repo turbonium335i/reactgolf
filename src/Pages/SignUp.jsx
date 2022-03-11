@@ -43,6 +43,7 @@ const SignUp = ({ mstat, messageback }) => {
     ) {
       console.log("data sent from front");
 
+      // fetch("http://127.0.0.1:8000/reactMakeUser", {
       fetch("https://pertinacity1.pythonanywhere.com/reactMakeUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
