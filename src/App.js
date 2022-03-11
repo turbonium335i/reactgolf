@@ -183,7 +183,7 @@ function App() {
                     onClick={() => setExpanded(false)}
                   >
                     {" "}
-                    Shop
+                    Gallery
                   </Link>
                   <Link
                     to="/cart"

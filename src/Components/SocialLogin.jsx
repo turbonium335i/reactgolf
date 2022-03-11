@@ -35,7 +35,7 @@ const SocialLogin = () => {
           return response.json();
         })
         .then((data) => {
-          console.log("data", data);
+          console.log("server response: ", data);
           kakaoUser(nickname, userMail);
         });
     }
