@@ -4,8 +4,11 @@ import {
   BsFillXDiamondFill,
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,
+  BsFillPersonCheckFill,
 } from "react-icons/bs";
 import { useContext, useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
+import SocialLogin from "../Components/SocialLogin";
 
 const SignUp = ({ mstat, messageback }) => {
   useEffect(() => {
@@ -648,13 +651,25 @@ const SignUp = ({ mstat, messageback }) => {
         </div>
 
         <div className="  text-center">
-          <button
+          {/* <button
             type="button"
             className="btn btn-lg btn-outline-success btn-block "
             onClick={sendData}
           >
             Sign Up
-          </button>
+          </button> */}
+          <Button
+            variant="outline-success"
+            size="lg"
+            className="mb-2"
+            onClick={sendData}
+          >
+            <BsFillPersonCheckFill />
+            &nbsp; Sign Up
+          </Button>{" "}
+          <Button variant="warning" size="lg" className="mb-2">
+            <SocialLogin />
+          </Button>
           <br />
           <br />
           {/* <p className="forgot-password text-right">
