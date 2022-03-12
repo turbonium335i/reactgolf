@@ -1,24 +1,17 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { addDays } from "date-fns";
+import { addDays, format } from "date-fns";
 import subDays from "date-fns/subDays";
 
 import React, { useState } from "react";
 
-const DatePick = ({ DateOut }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
-
-  // const onChange = (dates) => {
-  //   const [start, end] = dates;
-  //   setStartDate(start);
-  //   setEndDate(end);
-  //   DateOut(start, end);
-  // };
-
+const DatePick = ({ upDate, startDate }) => {
   const onChange = (date) => {
-    setStartDate(date);
-    DateOut(subDays(date, 2), addDays(date, 1));
+    upDate(
+      format(date, "MM-dd-yyyy"),
+      format(subDays(startDate, 2), "MM-dd-yyyy"),
+      format(addDays(startDate, 1), "MM-dd-yyyy")
+    );
   };
 
   return (
@@ -38,7 +31,6 @@ const DatePick = ({ DateOut }) => {
         inline
         disabledKeyboardNavigation
       /> */}
-
       <DatePicker
         selected={startDate}
         onChange={onChange}

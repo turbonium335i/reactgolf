@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import AuthContext from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -9,9 +9,29 @@ const Login = ({ mstat, messageback }) => {
   let { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const [checkForm, setCheckForm] = useState(false);
+
   function kakaoOkay() {
     navigate("/");
     console.log("something went wrong");
+  }
+
+  function formOkay() {
+    const uForm = document.getElementById("fname").value;
+    const pForm = document.getElementById("lname").value;
+
+    if (uForm !== "" && pForm !== "") {
+      setCheckForm(true);
+    } else {
+      setCheckForm(false);
+    }
+  }
+
+  const disableBtnProps = {};
+  if (checkForm === false) {
+    disableBtnProps.disabled = true;
+  } else {
+    disableBtnProps.disabled = false;
   }
 
   return (
@@ -33,13 +53,14 @@ const Login = ({ mstat, messageback }) => {
           name="password"
           placeholder="Password"
           className="my-2"
+          onChange={() => {
+            formOkay();
+          }}
         />
         &nbsp;
-        <input
-          type="submit"
-          className="  btn-warning text-dark "
-          value="Login"
-        />
+        <button type="submit" {...disableBtnProps} className="btn-sm ">
+          Login
+        </button>
       </form>
       <br />
 

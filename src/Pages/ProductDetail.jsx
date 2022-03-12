@@ -7,32 +7,39 @@ import {
   BsFillCartPlusFill,
 } from "react-icons/bs";
 import NumberFormat from "react-number-format";
+import { addDays, subDays, format } from "date-fns";
 
 import DatePick from "../Components/DatePick";
-import moment from "moment";
+// import moment from "moment";
 
-const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
-  const [loading, setLoading] = useState(true);
+const ProductDetail = ({
+  itemNum,
+  onAdd,
+  mstat,
+  messageback,
+  items,
+
+  upDate,
+  startDate,
+}) => {
   const [task, setTask] = useState({});
-  const [error, setError] = useState(null);
-
   const [tagOne, setTagOne] = useState("1");
   const [tagTwo, setTagTwo] = useState("1");
 
   const params = useParams();
   const navigate = useNavigate();
 
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  // const [startDate, setStartDate] = useState("");
+  // const [endDate, setEndDate] = useState("");
 
-  function DateOut(s, e) {
-    setStartDate(moment(s).format("MM-DD-YYYY"));
-    setEndDate(moment(e).format("MM-DD-YYYY"));
-    // console.log(startDate, endDate);
-    // console.log(s.toDateString());
-    // console.log(s.toLocaleString());
-    // console.log(moment(s).format("MM-DD-YYYY"));
-  }
+  // function DateOut(s, e) {
+  // setStartDate(moment(s).format("MM-DD-YYYY"));
+  // setEndDate(moment(e).format("MM-DD-YYYY"));
+  // console.log(startDate, endDate);
+  // console.log(s.toDateString());
+  // console.log(s.toLocaleString());
+  // console.log(moment(s).format("MM-DD-YYYY"));
+  // }
 
   let addToCart = async (id, title) => {
     console.log("addtocart ", id);
@@ -61,22 +68,6 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
   // }
 
   useEffect(() => {
-    // const fetchTask = async () => {
-    //   const res = await fetch(
-    //     `https://pertinacity1.pythonanywhere.com/itemapidetail/${params.id}`
-    //   );
-    //   const data = await res.json();
-
-    //   if (res.status === 404) {
-    //     navigate("/");
-    //   }
-
-    //   setTask(data);
-    //   setLoading(false);
-    //   console.log(data);
-    // };
-    // fetchTask();
-
     window.scrollTo(0, 0);
 
     for (let i = 0; i < items.length; i++) {
@@ -140,10 +131,11 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
           </h5>
           <br />
           <div className="text-center">
-            <DatePick DateOut={DateOut} />
+            <DatePick upDate={upDate} startDate={startDate} />
             <p className="text-success">
-              {startDate} <span className="text-dark fs-5">&#8594;</span>{" "}
-              {endDate}
+              {format(subDays(startDate, 2), "MM-dd-yyyy")}{" "}
+              <span className="text-dark fs-5">&#8594;</span>{" "}
+              {format(addDays(startDate, 1), "MM-dd-yyyy")}
             </p>
             {/* <Form.Select aria-label="Size: S">
               <option value="1">S</option>

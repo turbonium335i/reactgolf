@@ -55,6 +55,7 @@ export const AuthProvider = ({ children }) => {
 
   let loginUser = async (e) => {
     e.preventDefault();
+
     console.log("form submitted");
     let response = await fetch(
       "https://pertinacity1.pythonanywhere.com/token/",

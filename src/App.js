@@ -37,6 +37,8 @@ import CheckOut from "./Pages/CheckOut";
 import ProductByDate from "./Pages/ProductByDate";
 import SignUpLink from "./Pages/SignUpLink";
 
+import { addDays, format, subDays } from "date-fns";
+
 var now = new Date();
 var daycheck = now.getDate();
 if (String(daycheck).length < 2) {
@@ -57,6 +59,15 @@ function App() {
   const [messageInfo, setMessageInfo] = useState("0");
   const [queryDate, setQueryDate] = useState(today);
   const [expanded, setExpanded] = useState(false);
+
+  // date formating error cause by iso standards
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(
+    format(addDays(startDate, 1), "MM-dd-yyyy")
+  );
+  const [beforeDate, setBeforeDate] = useState(
+    format(subDays(startDate, 2), "MM-dd-yyyy")
+  );
 
   function timer() {
     setTimeout(() => {
@@ -121,6 +132,12 @@ function App() {
 
   const closeNav = () => {
     setExpanded(false);
+  };
+
+  const upDate = (s, b, e) => {
+    setStartDate(new Date(s));
+    setBeforeDate(b);
+    setEndDate(e);
   };
 
   return (
@@ -275,6 +292,10 @@ function App() {
                   mstat={mstat}
                   messageback={messageback}
                   items={items}
+                  startDate={startDate}
+                  beforeDate={beforeDate}
+                  endDate={endDate}
+                  upDate={upDate}
                 />
               }
             />
