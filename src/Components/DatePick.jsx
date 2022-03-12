@@ -18,7 +18,7 @@ const DatePick = ({ DateOut }) => {
 
   const onChange = (date) => {
     setStartDate(date);
-    console.log(startDate);
+    DateOut(subDays(date, 2), addDays(date, 1));
   };
 
   return (

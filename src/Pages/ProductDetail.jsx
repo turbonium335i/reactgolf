@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
 import {
@@ -28,6 +28,7 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
   function DateOut(s, e) {
     setStartDate(moment(s).format("MM-DD-YYYY"));
     setEndDate(moment(e).format("MM-DD-YYYY"));
+    // console.log(startDate, endDate);
     // console.log(s.toDateString());
     // console.log(s.toLocaleString());
     // console.log(moment(s).format("MM-DD-YYYY"));
@@ -141,8 +142,14 @@ const ProductDetail = ({ itemNum, onAdd, mstat, messageback, items }) => {
           <div className="text-center">
             <DatePick DateOut={DateOut} />
             <p className="text-success">
-              {startDate}--{endDate}
+              {startDate} <span className="text-dark fs-5">&#8594;</span>{" "}
+              {endDate}
             </p>
+            {/* <Form.Select aria-label="Size: S">
+              <option value="1">S</option>
+              <option value="2">XS</option>
+            </Form.Select> */}
+            <br />
             <Button
               variant="outline-dark"
               size="lg"
