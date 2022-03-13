@@ -135,7 +135,12 @@ const ProductByDate = ({
             <tr key={item.id}>
               {/* <td>{index + 1}</td> */}
               <td className="text-center">
-                <Link to={`/productdetail/${item.id}`}>
+                <Link
+                  to={`/productdetail/${item.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
+                >
                   <img
                     // src="https://i.postimg.cc/FsKxVMrK/Essential-Tech-Vest.jpg"
                     src={item.imglink}

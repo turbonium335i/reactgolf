@@ -1,15 +1,4 @@
-import {
-  Navbar,
-  NavDropdown,
-  Nav,
-  Container,
-  Row,
-  Col,
-  ProgressBar,
-  Table,
-  Alert,
-  Button,
-} from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,6 +8,8 @@ const Cart = ({ items, kart, onDelete }) => {
   var shopKart = [];
   const navigate = useNavigate();
 
+  var subTotal = 0;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -26,6 +17,7 @@ const Cart = ({ items, kart, onDelete }) => {
   for (var i = 0; i < items.length; i++) {
     if (kart.includes(items[i].id)) {
       shopKart.push(items[i]);
+      subTotal += items[i].rentalprice;
     }
   }
 
@@ -110,10 +102,33 @@ const Cart = ({ items, kart, onDelete }) => {
       </div>
       <br />
       <div className="text-secondary text-end">
-        <h5>SubTotal: 000,000</h5>
-        <h5>Shipping: 000,000</h5>
-        <h3>Total: 000,000</h3>
-        <h4>shopkart.id, price, total</h4>
+        <h5>
+          SubTotal:{" "}
+          <NumberFormat
+            value={subTotal}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"₩"}
+          />
+        </h5>
+        <h5>
+          Shipping:{" "}
+          <NumberFormat
+            value="6000"
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"₩"}
+          />{" "}
+        </h5>
+        <h3>
+          Total:{" "}
+          <NumberFormat
+            value={subTotal + 6000}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"₩"}
+          />{" "}
+        </h3>
       </div>
     </div>
   );

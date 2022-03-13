@@ -25,6 +25,7 @@ const ProductDetail = ({
   const [task, setTask] = useState({});
   const [tagOne, setTagOne] = useState("1");
   const [tagTwo, setTagTwo] = useState("1");
+  const [dateScroll, setDateScroll] = useState(false);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -68,7 +69,9 @@ const ProductDetail = ({
   // }
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    // if (true) {
+    //   window.scrollTo(0, 0);
+    // }
 
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == params.id) {

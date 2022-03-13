@@ -47,7 +47,12 @@ const Products = ({ onAdd, items, mstat, messageback }) => {
             {groupOne.map((item) => (
               <Card key={item.id}>
                 {" "}
-                <Link to={`/productdetail/${item.id}`}>
+                <Link
+                  to={`/productdetail/${item.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
+                >
                   <Card.Img variant="top" src={item.imglink} />{" "}
                 </Link>
                 <Card.Body>
