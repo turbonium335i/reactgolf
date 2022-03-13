@@ -48,7 +48,7 @@ const Profile = () => {
       <div className="text-center pt-5">
         {/* <DatePick DateOut={DateOut} /> */}
         {/* <p className="text-success">
-          {startDate}--{endDate}z
+          {startDate}--{endDate}
         </p> */}
         *
       </div>

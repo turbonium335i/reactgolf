@@ -48,17 +48,27 @@ const ProductDetail = ({
     messageback(title + " added!");
     mstat(title);
 
+    // if there is a user
     if (1 === 1) {
-      fetch(`https://pertinacity1.pythonanywhere.com/addtokartapi`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      let response = await fetch(
+        "http://127.0.0.1:8000/addtokartapi",
 
-        body: JSON.stringify({
-          id: id,
-          user: "username here",
-          action: "add",
-        }),
-      });
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: id,
+            user: "username here",
+            dates: ["01-10-2022", "10-10-2022"],
+            action: "add",
+          }),
+        }
+      );
+
+      let data = await response.json();
+      console.log(data);
     }
   };
 
