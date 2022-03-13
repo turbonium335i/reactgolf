@@ -68,7 +68,7 @@ const ProductDetail = ({
   // }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == params.id) {
@@ -176,7 +176,12 @@ const ProductDetail = ({
       <div className="row border border-light pb-2">
         <div className="col-4">
           {" "}
-          <Link to={`/productdetail/${task.tagWith}`}>
+          <Link
+            to={`/productdetail/${task.tagWith}`}
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
             <img src={tagOne.imglink} className="img-fluid py-2" />
           </Link>
         </div>
@@ -194,7 +199,12 @@ const ProductDetail = ({
         </div>
         <div className="col-4">
           {" "}
-          <Link to={`/productdetail/${task.tagWithTwo}`}>
+          <Link
+            to={`/productdetail/${task.tagWithTwo}`}
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+          >
             <img src={tagTwo.imglink} className="img-fluid py-2" />
           </Link>
         </div>
