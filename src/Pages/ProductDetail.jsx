@@ -10,10 +10,10 @@ import NumberFormat from "react-number-format";
 import { addDays, subDays, format } from "date-fns";
 
 import DatePick from "../Components/DatePick";
+import { type } from "@testing-library/user-event/dist/type";
 // import moment from "moment";
 
 const ProductDetail = ({
-  itemNum,
   onAdd,
   mstat,
   messageback,
@@ -68,6 +68,13 @@ const ProductDetail = ({
   //   }
   // }
 
+  function convert(data) {
+    // make json notation has double quotes, this freaken took forever to find out
+    var b = data.replace(/'/g, '"');
+    var c = JSON.parse(b);
+    // console.log(c["outDates"]);
+  }
+
   useEffect(() => {
     // if (true) {
     //   window.scrollTo(0, 0);
@@ -76,6 +83,7 @@ const ProductDetail = ({
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == params.id) {
         setTask(items[i]);
+        convert(items[i]["rsvJson"]);
       }
       if (items[i].id == task.tagWith) {
         setTagOne(items[i]);
@@ -163,13 +171,13 @@ const ProductDetail = ({
               <BsFillCartPlusFill /> Cart
             </Button>
           </div>
-
-          <br />
-          <h6>{task.description_long}</h6>
+          <br />{" "}
+          <pre>
+            <h6 style={{ whiteSpace: "pre-wrap" }}>{task.description_long}</h6>
+          </pre>
           <br />
           <h6>{task.description_short}</h6>
           <br />
-
           <br />
           <br />
         </div>

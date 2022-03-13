@@ -101,6 +101,11 @@ const Cart = ({ items, kart, onDelete }) => {
         </Button>
       </div>
       <br />
+      <div className="text-success text-end">
+        <h6 className="my-0 d-inline ">Promo code: </h6>
+        <h5 className="border d-inline ">$$DISCOUNT</h5>
+        <br />
+      </div>
       <div className="text-secondary text-end">
         <h5>
           SubTotal:{" "}
