@@ -49,7 +49,7 @@ const ProductDetail = ({
     mstat(title);
 
     // if there is a user
-    if (1 === 1) {
+    if (1 === 0) {
       let response = await fetch(
         "http://127.0.0.1:8000/addtokartapi",
 

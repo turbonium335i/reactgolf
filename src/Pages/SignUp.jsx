@@ -16,6 +16,7 @@ const SignUp = ({ mstat, messageback }) => {
   }, []);
 
   let [terms, setTerms] = useState(true);
+  const [checkForm, setCheckForm] = useState(false);
 
   let navigate = useNavigate();
 
@@ -78,6 +79,23 @@ const SignUp = ({ mstat, messageback }) => {
     }
   };
 
+  const disableBtnProps = {};
+  if (checkForm === false) {
+    disableBtnProps.disabled = true;
+  } else {
+    disableBtnProps.disabled = false;
+  }
+
+  function checkBox() {
+    const checkOne = document.getElementById("checkOne").checked;
+    const checkTwo = document.getElementById("checkTwo").checked;
+    if (checkOne === true && checkTwo === true) {
+      setCheckForm(true);
+    } else {
+      setCheckForm(false);
+    }
+  }
+
   return (
     <div className="container">
       <form>
@@ -135,15 +153,28 @@ const SignUp = ({ mstat, messageback }) => {
           <p className="fw-bold">
             I have read and agree to the following conditions:
           </p>
-            <input type="checkbox" id="html" name="conditionOne" value="HTML" />
-            <label className="fw-bold">약관1 동의</label>
-          <br />
-            <input
+           {" "}
+          <input
             type="checkbox"
-            id="css"
+            id="checkOne"
+            name="conditionOne"
+            value="one"
+            onChange={() => {
+              checkBox();
+            }}
+          />
+            <label className="fw-bold">약관1 동의</label>
+          <br /> {" "}
+          <input
+            type="checkbox"
+            id="checkTwo"
             name="conditionTwo"
-            value="CSS"
-          />  <label className="fw-bold">약관2 동의</label>
+            value="two"
+            onChange={() => {
+              checkBox();
+            }}
+          />
+            <label className="fw-bold">약관2 동의</label>
         </div>
         <br />
         <div>
@@ -590,7 +621,12 @@ const SignUp = ({ mstat, messageback }) => {
                 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다. 부
                 칙(시행일) 이 약관은 2022년 3월 14일부터 시행합니다.
               </p>
-              <p>[필수] 개인정보 수집 및 이용 동의</p>
+              <p className="text-primary fw-bold">
+                [필수] 개인정보 수집 및 이용 동의{" "}
+                <h5 className="text-danger d-inline ">
+                  <BsFillXDiamondFill />
+                </h5>
+              </p>
               <p>1. 개인정보 수집목적 및 이용목적</p>
               <p>
                 가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
@@ -663,11 +699,18 @@ const SignUp = ({ mstat, messageback }) => {
             size="lg"
             className="mb-2"
             onClick={sendData}
+            id="SignUpBtn"
+            {...disableBtnProps}
           >
             <BsFillPersonCheckFill />
             &nbsp; Sign Up
           </Button>{" "}
-          <Button variant="warning" size="lg" className="mb-2">
+          <Button
+            variant="warning"
+            size="lg"
+            className="mb-2 text-dark"
+            {...disableBtnProps}
+          >
             <SocialLogin />
           </Button>
           <br />

@@ -77,7 +77,7 @@ const Landing = ({ rentDate }) => {
         <CardGroup>
           <Card>
             {" "}
-            <Link to={"/productbydate"} state={"pxg"}>
+            <Link to={"/productbydate"} state={"New"}>
               <Card.Img
                 variant="top"
                 // src="https://i.postimg.cc/KzKXjnqV/gfore.jpg"
@@ -96,7 +96,7 @@ const Landing = ({ rentDate }) => {
           </Card>
 
           <Card>
-            <Link to={"/productbydate"} state={"G/FORE"}>
+            <Link to={"/productbydate"} state={"Top"}>
               <Card.Img
                 variant="top"
                 // src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"
@@ -104,7 +104,7 @@ const Landing = ({ rentDate }) => {
               />{" "}
             </Link>
             <Card.Body>
-              <Card.Title className="container text-center">TOPS</Card.Title>
+              <Card.Title className="container text-center">Tops</Card.Title>
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
@@ -113,7 +113,7 @@ const Landing = ({ rentDate }) => {
           </Card>
           <Card>
             {" "}
-            <Link to={"/productbydate"} state={"reset"}>
+            <Link to={"/productbydate"} state={"Bottom"}>
               <Card.Img
                 variant="top"
                 src="https://i.postimg.cc/j5dWrrkw/Quarter-G-s-Wrap-Skirt.jpg"
@@ -121,7 +121,7 @@ const Landing = ({ rentDate }) => {
               />{" "}
             </Link>
             <Card.Body>
-              <Card.Title className="container text-center">BOTTOM</Card.Title>
+              <Card.Title className="container text-center">Bottoms</Card.Title>
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
@@ -129,7 +129,7 @@ const Landing = ({ rentDate }) => {
             </Card.Footer>
           </Card>
           <Card>
-            <Link to={"/productbydate"} state={"reset"}>
+            <Link to={"/productbydate"} state={"Acc"}>
               <Card.Img
                 variant="top"
                 // src="https://i.postimg.cc/63GQB83G/callaway.jpg"

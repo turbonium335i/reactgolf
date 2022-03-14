@@ -31,36 +31,28 @@ const ProductByDate = ({
   var groupOne = items.slice(0, 3);
 
   function clickTerm(searchTerm) {
-    if (searchTerm === "reset") {
+    if (searchTerm === "reset" || searchTerm === "New") {
       setqueryItems(items);
-    } else {
+    } else if (searchTerm === "PXG" || searchTerm === "G/FORE") {
       setqueryItems(
         items.filter((i) => i.brand.toLowerCase() === searchTerm.toLowerCase())
       );
+    } else if (searchTerm === "Top") {
+      setqueryItems(items.filter((i) => i.category === 1));
+    } else if (searchTerm === "Bottom") {
+      setqueryItems(items.filter((i) => i.category === 3));
+    } else if (searchTerm === "Acc") {
+      setqueryItems(items.filter((i) => i.category === 2));
+    } else if (searchTerm === "S") {
+      setqueryItems(items.filter((i) => i.size === "S"));
+    } else if (searchTerm === "XS") {
+      setqueryItems(items.filter((i) => i.size === "XS"));
+    } else if (searchTerm === "F") {
+      setqueryItems(items.filter((i) => i.size === "F"));
     }
   }
 
   let [RoundDate, setRoundDate] = useState(queryDate);
-
-  let addToCart = async (id, title) => {
-    console.log("addtocart ", id);
-    onAdd(id);
-    mstat(title);
-    messageback(title + " added!");
-
-    if (1 === 1) {
-      fetch(`https://pertinacity1.pythonanywhere.com/addtokartapi`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify({
-          id: id,
-          user: "username here",
-          action: "add",
-        }),
-      });
-    }
-  };
 
   function dateSubmit(subdate) {
     rentDate(subdate);
@@ -104,15 +96,15 @@ const ProductByDate = ({
         <Button variant="outline-primary" onClick={() => clickTerm("PXG")}>
           PXG
         </Button>{" "}
-        <Button variant="outline-secondary" onClick={() => clickTerm("G/FORE")}>
-          Acc
-        </Button>{" "}
-        <Button variant="outline-secondary" onClick={() => clickTerm("G/FORE")}>
+        <Button variant="outline-secondary" onClick={() => clickTerm("Top")}>
           Top
         </Button>{" "}
-        <Button variant="outline-secondary" onClick={() => clickTerm("reset")}>
+        <Button variant="outline-secondary" onClick={() => clickTerm("Bottom")}>
           Bottom
-        </Button>
+        </Button>{" "}
+        <Button variant="outline-secondary" onClick={() => clickTerm("Acc")}>
+          Acc
+        </Button>{" "}
         <Button variant="outline-primary" onClick={() => clickTerm("reset")}>
           <BsArrowCounterclockwise />
         </Button>
@@ -152,6 +144,9 @@ const ProductByDate = ({
               <td>
                 <Link
                   to={`/productdetail/${item.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
                   className="text-decoration-none text-dark"
                 >
                   <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
@@ -164,12 +159,20 @@ const ProductByDate = ({
               </td>
               {/* <td>{item.description_short}</td> */}
               <td className="text-center">
-                {item.size === "s" ? (
-                  <Button variant="outline-dark" size="sm">
+                {item.size === "S" ? (
+                  <Button
+                    variant="outline-dark"
+                    size="sm"
+                    onClick={() => clickTerm(item.size)}
+                  >
                     {item.size}
                   </Button>
                 ) : (
-                  <Button variant="outline-primary" size="sm">
+                  <Button
+                    variant="outline-primary"
+                    size="sm"
+                    onClick={() => clickTerm(item.size)}
+                  >
                     {item.size}
                   </Button>
                 )}
