@@ -1,20 +1,12 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { addDays, format, parseISO, subDays } from "date-fns";
-
+import { addDays, format, subDays } from "date-fns";
 import Moment from "react-moment";
-
-import React, { useState } from "react";
 
 const DatePick = ({ upDate, startDate }) => {
   const onChange = (date) => {
-    upDate(
-      date
-      //   format(subDays(date, 2), "MM-dd-yyyy"),
-      //   format(addDays(date, 1), "MM-dd-yyyy")
-    );
-    // // console.log(new Date("03-25-2022"));
-    // console.log(addDays(date, 1));
+    upDate(date);
+
     console.log(date);
     console.log(format(new Date("2022-03-04T00:00:00"), "MM-dd-yyyy"));
   };

@@ -4,19 +4,12 @@ import { Table, Button } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const ProductByDate = ({
-  queryDate,
-  rentDate,
-  items,
-  onAdd,
-  mstat,
-  messageback,
-}) => {
+const ProductByDate = ({ queryDate, rentDate, items }) => {
   let [queryItems, setqueryItems] = useState(items);
 
   const location = useLocation();
   const state = location.state;
-  console.log(state);
+  // console.log(state);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +24,7 @@ const ProductByDate = ({
   var groupOne = items.slice(0, 3);
 
   function clickTerm(searchTerm) {
+    window.scrollTo(0, 0);
     if (searchTerm === "reset" || searchTerm === "New") {
       setqueryItems(items);
     } else if (searchTerm === "PXG" || searchTerm === "G/FORE") {
@@ -52,10 +46,8 @@ const ProductByDate = ({
     }
   }
 
-  let [RoundDate, setRoundDate] = useState(queryDate);
-
   function dateSubmit(subdate) {
-    rentDate(subdate);
+    rentDate(subdate, subdate + "T00:00:00");
   }
 
   return (
@@ -74,14 +66,14 @@ const ProductByDate = ({
           className="rounded "
           defaultValue={queryDate}
           onChange={(evt) => {
-            setRoundDate(evt.target.value);
+            dateSubmit(evt.target.value);
           }}
         />{" "}
         <Link to={`/productbydate`}>
           <Button
             variant="outline-success"
             onClick={() => {
-              dateSubmit(RoundDate);
+              console.log("btn clicked");
             }}
           >
             <BsSearch />

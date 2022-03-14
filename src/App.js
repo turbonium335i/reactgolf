@@ -125,19 +125,18 @@ function App() {
     setMessageInfo(info);
   };
 
-  const rentDate = (info) => {
-    setQueryDate(info);
-    console.log(info);
-  };
-
   const closeNav = () => {
     setExpanded(false);
   };
 
-  const upDate = (s, b, e) => {
-    setStartDate(new Date(s));
-    setBeforeDate(b);
-    setEndDate(e);
+  const upDate = (info) => {
+    setStartDate(new Date(info));
+  };
+
+  const rentDate = (info, fns) => {
+    setStartDate(new Date(fns));
+    console.log(info);
+    setQueryDate(info);
   };
 
   return (
@@ -265,15 +264,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                <Landing
-                  rentDate={rentDate}
-                  startDate={startDate}
-                  beforeDate={beforeDate}
-                  endDate={endDate}
-                  upDate={upDate}
-                />
-              }
+              element={<Landing rentDate={rentDate} queryDate={queryDate} />}
             />
 
             <Route

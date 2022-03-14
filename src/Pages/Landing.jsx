@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { addDays, subDays, format } from "date-fns";
+import { addDays, format, parseISO, subDays } from "date-fns";
 
 var now = new Date();
 var daycheck = now.getDate();
@@ -26,15 +26,13 @@ if (String(mocheck).length < 2) {
 
 var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
-const Landing = ({ rentDate, upDate, startDate }) => {
+const Landing = ({ rentDate, queryDate }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  let [RoundDate, setRoundDate] = useState(today);
-
   function dateSubmit(subdate) {
-    rentDate(subdate);
+    rentDate(subdate, subdate + "T00:00:00");
   }
 
   return (
@@ -51,22 +49,21 @@ const Landing = ({ rentDate, upDate, startDate }) => {
           id="roundate"
           name="roundate"
           className="rounded"
-          defaultValue={today}
+          defaultValue={queryDate}
           onChange={(evt) => {
-            setRoundDate(evt.target.value);
+            dateSubmit(evt.target.value);
           }}
         />{" "}
         <Link to={`/productbydate`}>
           <Button
             variant="outline-success"
             onClick={() => {
-              dateSubmit(RoundDate);
+              console.log("btn clicked");
             }}
           >
             <BsSearch />
           </Button>
         </Link>{" "}
-        {/* <span className="text-danger mt-1 ms-2">{RoundDate}</span> */}
       </div>
       <h5 className="text-center pt-3">
         Golf with Style. OnWear Premium Rentals.
