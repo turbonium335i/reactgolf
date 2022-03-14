@@ -177,7 +177,7 @@ const ProductByDate = ({
                   </Button>
                 )}
               </td>
-              <td>{item.rentalprice.toLocaleString()}</td>
+              <td>&#8361;{item.rentalprice.toLocaleString()}</td>
             </tr>
           ))}
         </tbody>

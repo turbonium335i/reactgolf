@@ -18,7 +18,6 @@ const ProductDetail = ({
   mstat,
   messageback,
   items,
-
   upDate,
   startDate,
 }) => {

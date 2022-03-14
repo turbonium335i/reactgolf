@@ -45,8 +45,6 @@ const SocialLogin = () => {
     try {
       setNickname(user.profile["nickname"]);
       setUserMail(user.email);
-      console.log(user);
-      // sendData();
       if (kakaoUser(nickname, userMail)) {
         sendData();
       }
@@ -59,13 +57,13 @@ const SocialLogin = () => {
     window.Kakao.Auth.login({
       scope: "profile_nickname, account_email, gender",
       success: function (authObj) {
-        console.log(authObj);
+        // console.log(authObj);
 
         window.Kakao.API.request({
           url: "/v2/user/me",
           success: (res) => {
             const kakao_account = res.kakao_account;
-            console.log(kakao_account);
+            // console.log(kakao_account);
             setUser(kakao_account);
           },
         });

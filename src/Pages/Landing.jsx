@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import DatePickSlim from "../Components/DatePickSlim";
+import { addDays, subDays, format } from "date-fns";
 
 var now = new Date();
 var daycheck = now.getDate();
@@ -26,7 +26,7 @@ if (String(mocheck).length < 2) {
 
 var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
-const Landing = ({ rentDate }) => {
+const Landing = ({ rentDate, upDate, startDate }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -46,7 +46,6 @@ const Landing = ({ rentDate }) => {
           width="auto"
         /> */}
         <h6 className="p-2 mb-0">Rounding Date </h6>
-        {/* <DatePickSlim /> */}
         <input
           type="date"
           id="roundate"

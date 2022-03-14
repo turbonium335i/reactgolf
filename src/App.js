@@ -263,7 +263,18 @@ function App() {
           </div>
 
           <Routes>
-            <Route path="/" element={<Landing rentDate={rentDate} />} />
+            <Route
+              path="/"
+              element={
+                <Landing
+                  rentDate={rentDate}
+                  startDate={startDate}
+                  beforeDate={beforeDate}
+                  endDate={endDate}
+                  upDate={upDate}
+                />
+              }
+            />
 
             <Route
               path="signup"
