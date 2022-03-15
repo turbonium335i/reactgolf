@@ -20,10 +20,9 @@ const Footer = () => (
             className="mb-2"
           />
 
-          <h6 className="fw-bold">대표: 박서은</h6>
+          <h6 className="fw-bold">대표: 박서은 010-8875-9072</h6>
+
           <p className="mb-2">국민은행 : 469901-04-236553</p>
-          <p className="mb-0">사업자 등록번호 : 846-14-01659</p>
-          <p className="mb-0">통신판매업신고증 : 1647-3048-0610-6685</p>
         </div>
 
         <hr className="clearfix w-100 d-md-none pb-0" />
@@ -38,6 +37,14 @@ const Footer = () => (
             <li>
               <BsFillQuestionCircleFill className="text-success" />
               <a href="#!">How to</a>
+            </li>
+            <li>
+              {" "}
+              <p className="mt-1">사업자 등록번호 : 846-14-01659</p>
+              <p className="mb-0">통신판매업신고증 : 1647-3048-0610-6685</p>
+              <p className="mb-0">
+                서울특별시 서초구 강남대로53길 8, 7층 8-14호
+              </p>
             </li>
           </ul>
         </div>
