@@ -20,8 +20,10 @@ const Footer = () => (
             className="mb-2"
           />
 
-          <p>대표: 박서은</p>
-          <p>사업자 등록번호 : 846-14-01659</p>
+          <h6 className="fw-bold">대표: 박서은</h6>
+          <p className="mb-2">국민은행 : 469901-04-236553</p>
+          <p className="mb-0">사업자 등록번호 : 846-14-01659</p>
+          <p className="mb-0">통신판매업신고증 : 1647-3048-0610-6685</p>
         </div>
 
         <hr className="clearfix w-100 d-md-none pb-0" />
