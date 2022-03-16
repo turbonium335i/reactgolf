@@ -54,7 +54,7 @@ if (String(mocheck).length < 2) {
 var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
 function App() {
-  const [kart, setkart] = useState([1, 2, 3]);
+  const [kart, setkart] = useState([9]);
   let [items, setItems] = useState([]);
   const [success, setSuccess] = useState(false);
   const [messageInfo, setMessageInfo] = useState("0");

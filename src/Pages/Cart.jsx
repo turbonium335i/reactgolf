@@ -16,12 +16,25 @@ const Cart = ({ items, kart, onDelete }) => {
     jsf__pay(api_userName);
   }
 
+  function m_Completepayment(FormOrJson, closeEvent) {
+    var frm = api_userName;
+
+    window.GetField(frm, FormOrJson);
+
+    if (frm.res_cd.value == "0000") {
+      frm.submit();
+    } else {
+      alert("[" + frm.res_cd.value + "] " + frm.res_msg.value);
+    }
+  }
+
   function jsf__pay(e) {
     console.log("fired: ", e);
 
     try {
       window.KCP_Pay_Execute(e);
-      navigate("/paymentsuccess");
+      // m_Completepayment();
+      // navigate("/paymentsuccess");
     } catch (er) {
       console.log(er);
     }
@@ -156,8 +169,12 @@ const Cart = ({ items, kart, onDelete }) => {
         </h3>
       </div>
       <br />
-
-      <form name="order_info" id="paypay">
+      <form
+        name="order_info"
+        method="post"
+        id="paypay"
+        action="https://stg-spl.kcp.co.kr/gw/enc/v1/payment"
+      >
         <div className="  row ">
           <div className="col-6   text-end">
             {" "}
