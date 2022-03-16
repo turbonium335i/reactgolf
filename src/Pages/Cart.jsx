@@ -173,7 +173,7 @@ const Cart = ({ items, kart, onDelete }) => {
         name="order_info"
         method="post"
         id="paypay"
-        action="https://stg-spl.kcp.co.kr/gw/enc/v1/payment"
+        action="https://spl.kcp.co.kr/gw/enc/v1/payment"
       >
         <div className="  row ">
           <div className="col-6   text-end">
@@ -233,7 +233,7 @@ const Cart = ({ items, kart, onDelete }) => {
               defaultValue={100000000000}
             />
             {/* 가맹점 정보 설정*/}
-            <input type="hidden" name="site_cd" defaultValue="T0000" />
+            <input type="hidden" name="site_cd" defaultValue="AHNJI" />
             <input type="hidden" name="site_name" defaultValue="TEST SITE" />
             {/* 인증데이터 처리*/}
             <input type="hidden" name="res_cd" defaultValue />
