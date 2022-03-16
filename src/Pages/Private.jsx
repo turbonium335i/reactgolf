@@ -1,14 +1,3 @@
-import {
-  Navbar,
-  NavDropdown,
-  Nav,
-  Container,
-  Row,
-  Col,
-  ProgressBar,
-  Table,
-  Alert,
-} from "react-bootstrap";
 import logo from "../logo.svg";
 import "../App.css";
 

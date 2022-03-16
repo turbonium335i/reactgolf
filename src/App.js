@@ -28,6 +28,7 @@ import ProductDetail from "./Pages/ProductDetail";
 import Cart from "./Pages/Cart";
 import SignUp from "./Pages/SignUp";
 import Profile from "./Pages/Profile";
+import PaymentSuccess from "./Pages/PaymentSuccess";
 
 import KartNavbar from "./Components/KartNavbar";
 import UserID from "./Components/UserID";
@@ -324,7 +325,7 @@ function App() {
                 <CheckOut kart={kart} items={items} onDelete={onDelete} />
               }
             />
-
+            <Route path="paymentsuccess" element={<PaymentSuccess />} />
             <Route element={<PrivateRoute />}>
               <Route path="private" element={<Private />} />
               <Route

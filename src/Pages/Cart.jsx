@@ -21,6 +21,7 @@ const Cart = ({ items, kart, onDelete }) => {
 
     try {
       window.KCP_Pay_Execute(e);
+      navigate("/paymentsuccess");
     } catch (er) {
       console.log(er);
     }
@@ -160,7 +161,7 @@ const Cart = ({ items, kart, onDelete }) => {
         <div className="  row ">
           <div className="col-6   text-end">
             {" "}
-            <label for="ordr_idxx">ordr_idxx</label> <br />
+            <label htmlFor="ordr_idxx">ordr_idxx</label> <br />
             <input
               type="text"
               name="ordr_idxx"
@@ -168,9 +169,9 @@ const Cart = ({ items, kart, onDelete }) => {
               maxLength={40}
             />{" "}
             <br />
-            <label for="good_name">good_name</label> <br />
+            <label htmlFor="good_name">good_name</label> <br />
             <input type="text" name="good_name" defaultValue="운동화" /> <br />
-            <label for="good_mny">good_mny</label> <br />
+            <label htmlFor="good_mny">good_mny</label> <br />
             <input
               type="text"
               name="good_mny"
@@ -178,25 +179,25 @@ const Cart = ({ items, kart, onDelete }) => {
               maxLength={9}
             />{" "}
             <br />
-            <label for="buyr_name">buyr_name</label> <br />
+            <label htmlFor="buyr_name">buyr_name</label> <br />
             <input type="text" name="buyr_name" defaultValue="홍길동" /> <br />
           </div>
           <div className="col-6">
-            <label for="buyr_tel1">buyr_tel1</label> <br />
+            <label htmlFor="buyr_tel1">buyr_tel1</label> <br />
             <input
               type="text"
               name="buyr_tel1"
               defaultValue="02-0000-0000"
             />{" "}
             <br />
-            <label for="buyr_tel2">buyr_tel2</label> <br />
+            <label htmlFor="buyr_tel2">buyr_tel2</label> <br />
             <input
               type="text"
               name="buyr_tel2"
               defaultValue="010-0000-0000"
             />{" "}
             <br />
-            <label for="buyr_mail">buyr_mail</label> <br />
+            <label htmlFor="buyr_mail">buyr_mail</label> <br />
             <input
               type="text"
               name="buyr_mail"
@@ -204,7 +205,7 @@ const Cart = ({ items, kart, onDelete }) => {
             />{" "}
             <br />
             <br />
-            <label for="pay_method" className="border text-danger px-5">
+            <label htmlFor="pay_method" className="border text-danger px-5">
               Credit Card
             </label>{" "}
             <br />
