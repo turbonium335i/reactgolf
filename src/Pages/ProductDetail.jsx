@@ -1,5 +1,6 @@
 import { Button, Form } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../Context/AuthContext";
 import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
 import {
   BsFillArrowLeftCircleFill,
@@ -24,10 +25,10 @@ const ProductDetail = ({
   const [task, setTask] = useState({});
   const [tagOne, setTagOne] = useState("1");
   const [tagTwo, setTagTwo] = useState("1");
-  const [dateScroll, setDateScroll] = useState(false);
 
   const params = useParams();
   const navigate = useNavigate();
+  let { user } = useContext(AuthContext);
 
   // const [startDate, setStartDate] = useState("");
   // const [endDate, setEndDate] = useState("");
@@ -43,12 +44,16 @@ const ProductDetail = ({
 
   let addToCart = async (id, title) => {
     console.log("addtocart ", id);
-    onAdd(id);
+
+    onAdd(id, [
+      format(subDays(startDate, 2), "MM-dd-yyyy"),
+      format(addDays(startDate, 1), "MM-dd-yyyy"),
+    ]);
     messageback(title + " added!");
     mstat(title);
 
     // if there is a user
-    if (1 === 0) {
+    if (user !== null) {
       let response = await fetch(
         "http://127.0.0.1:8000/addtokartapi",
 
@@ -59,8 +64,11 @@ const ProductDetail = ({
           },
           body: JSON.stringify({
             id: id,
-            user: "username here",
-            dates: ["01-10-2022", "10-10-2022"],
+            user: user.username,
+            dates: [
+              format(subDays(startDate, 2), "MM-dd-yyyy"),
+              format(addDays(startDate, 1), "MM-dd-yyyy"),
+            ],
             action: "add",
           }),
         }

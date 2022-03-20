@@ -2,21 +2,15 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./Context/AuthContext";
-import React, { useState, useEffect, useContext } from "react";
+
+import React, { useState, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
-
-import {
-  BsFillCartFill,
-  BsSearch,
-  BsPersonCircle,
-  BsInstagram,
-  BsEasel,
-} from "react-icons/bs";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { BsFillCartFill, BsPersonCircle } from "react-icons/bs";
 
 import PrivateRoute from "./Utils/PrivateRoute";
 
@@ -54,7 +48,9 @@ if (String(mocheck).length < 2) {
 var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
 function App() {
-  const [kart, setkart] = useState([9]);
+  const [kart, setkart] = useState([]);
+  const [kartDates, setKartDates] = useState({});
+
   let [items, setItems] = useState([]);
   const [success, setSuccess] = useState(false);
   const [messageInfo, setMessageInfo] = useState("0");
@@ -78,7 +74,11 @@ function App() {
 
   useEffect(() => {
     getItems();
+
     Aos.init({ duration: 1000 });
+    // setTimeout(function () {
+    //   console.log(apiKart);
+    // }, 1000);
   }, []);
 
   let getItems = async () => {
@@ -100,17 +100,51 @@ function App() {
     }
   };
 
-  const onAdd = (id) => {
+  const onAdd = (id, rDates) => {
     const newkartItem = { id };
-    // setkart([...kart, newkartItem.id]);
+    console.log(kartDates);
+    kartDates[id] = rDates;
+    console.log(kartDates);
 
     let cKart = [...kart, newkartItem.id];
     let newkart = [...new Set(cKart)];
     setkart(newkart);
   };
 
-  const onDelete = (id) => {
+  const onDelete = (id, name) => {
     setkart(kart.filter((k) => k !== id));
+    delete kartDates[id];
+
+    var usercheck = "none";
+
+    let addToCart = async (id, name) => {
+      if (usercheck !== "none") {
+        let response = await fetch(
+          "https://pertinacity1.pythonanywhere.com/addtokartapi",
+
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: id,
+              user: name,
+              dates: [
+                format(subDays(startDate, 2), "MM-dd-yyyy"),
+                format(addDays(startDate, 1), "MM-dd-yyyy"),
+              ],
+              action: "delete",
+            }),
+          }
+        );
+
+        let data = await response.json();
+        console.log(data);
+      }
+    };
+    usercheck = name;
+    addToCart(id, usercheck);
   };
 
   const mstat = (stat) => {
@@ -136,8 +170,12 @@ function App() {
 
   const rentDate = (info, fns) => {
     setStartDate(new Date(fns));
-    console.log(info);
     setQueryDate(info);
+  };
+
+  const setKartCount = (i, d) => {
+    setkart(i);
+    setKartDates(d);
   };
 
   return (
@@ -274,7 +312,13 @@ function App() {
             />
             <Route
               path="login"
-              element={<Login mstat={mstat} messageback={messageback} />}
+              element={
+                <Login
+                  mstat={mstat}
+                  messageback={messageback}
+                  setKartCount={setKartCount}
+                />
+              }
             />
             <Route
               path="products"
@@ -317,7 +361,15 @@ function App() {
             />
             <Route
               path="cart"
-              element={<Cart kart={kart} items={items} onDelete={onDelete} />}
+              element={
+                <Cart
+                  kart={kart}
+                  items={items}
+                  onDelete={onDelete}
+                  setKartCount={setKartCount}
+                  kartDates={kartDates}
+                />
+              }
             />
             <Route
               path="checkout"
@@ -330,7 +382,13 @@ function App() {
               <Route path="private" element={<Private />} />
               <Route
                 path="profile"
-                element={<Profile kart={kart} items={items} />}
+                element={
+                  <Profile
+                    kart={kart}
+                    items={items}
+                    setKartCount={setKartCount}
+                  />
+                }
               />
             </Route>
           </Routes>

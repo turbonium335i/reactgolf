@@ -4,9 +4,12 @@ import AuthContext from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import NumberFormat from "react-number-format";
 
-const Cart = ({ items, kart, onDelete }) => {
+const Cart = ({ items, kart, onDelete, kartDates }) => {
   var shopKart = [];
+  const [kartUserName, setkartUserName] = useState("none");
   const navigate = useNavigate();
+
+  let { user } = useContext(AuthContext);
 
   var api_userName = "";
 
@@ -21,7 +24,7 @@ const Cart = ({ items, kart, onDelete }) => {
 
     window.GetField(frm, FormOrJson);
 
-    if (frm.res_cd.value == "0000") {
+    if (frm.res_cd.value === "0000") {
       frm.submit();
     } else {
       alert("[" + frm.res_cd.value + "] " + frm.res_msg.value);
@@ -43,6 +46,9 @@ const Cart = ({ items, kart, onDelete }) => {
   var subTotal = 0;
 
   useEffect(() => {
+    if (user !== null) {
+      setkartUserName(user.username);
+    }
     window.scrollTo(0, 0);
   }, []);
 
@@ -90,6 +96,7 @@ const Cart = ({ items, kart, onDelete }) => {
                 >
                   <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
                   <br /> <span className="text-secondary"> </span>
+                  {kartDates[item.id][0]} &#8594; {kartDates[item.id][1]}
                 </Link>
               </td>
               {/* <td>{item.description_short}</td> */}
@@ -106,7 +113,7 @@ const Cart = ({ items, kart, onDelete }) => {
                 <Button
                   variant="outline-danger"
                   size="sm"
-                  onClick={() => onDelete(item.id)}
+                  onClick={() => onDelete(item.id, kartUserName)}
                 >
                   X
                 </Button>
@@ -126,7 +133,7 @@ const Cart = ({ items, kart, onDelete }) => {
           variant="success"
           size="lg"
           onClick={() => {
-            handleSubmit();
+            goToKart();
           }}
         >
           CheckOut
@@ -173,7 +180,7 @@ const Cart = ({ items, kart, onDelete }) => {
         name="order_info"
         method="post"
         id="paypay"
-        action="https://spl.kcp.co.kr/gw/enc/v1/payment"
+        action="https://stg-spl.kcp.co.kr/gw/enc/v1/payment"
       >
         <div className="  row ">
           <div className="col-6   text-end">
@@ -233,16 +240,16 @@ const Cart = ({ items, kart, onDelete }) => {
               defaultValue={100000000000}
             />
             {/* 가맹점 정보 설정*/}
-            <input type="hidden" name="site_cd" defaultValue="AHNJI" />
+            <input type="hidden" name="site_cd" defaultValue="T0000" />
             <input type="hidden" name="site_name" defaultValue="TEST SITE" />
             {/* 인증데이터 처리*/}
-            <input type="hidden" name="res_cd" defaultValue />
-            <input type="hidden" name="res_msg" defaultValue />
-            <input type="hidden" name="enc_info" defaultValue />
-            <input type="hidden" name="enc_data" defaultValue />
-            <input type="hidden" name="ret_pay_method" defaultValue />
-            <input type="hidden" name="tran_cd" defaultValue />
-            <input type="hidden" name="use_pay_method" defaultValue />
+            <input type="hidden" name="res_cd" value="" />
+            <input type="hidden" name="res_msg" value="" />
+            <input type="hidden" name="enc_info" value="" />
+            <input type="hidden" name="enc_data" value="" />
+            <input type="hidden" name="ret_pay_method" value="" />
+            <input type="hidden" name="tran_cd" value="" />
+            <input type="hidden" name="use_pay_method" value="" />
             <br />
             <Button
               variant="success"

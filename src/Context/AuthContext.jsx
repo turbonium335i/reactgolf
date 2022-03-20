@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   );
 
   let [loading, setLoading] = useState(true);
+  let [authKart, setAuthKart] = useState([]);
 
   let navigate = useNavigate();
 
@@ -40,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       }
     );
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (response.status === 200) {
       setAuthTokens(data);
@@ -73,7 +74,7 @@ export const AuthProvider = ({ children }) => {
       }
     );
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (response.status === 200) {
       setAuthTokens(data);

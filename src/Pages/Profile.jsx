@@ -4,7 +4,7 @@ import DatePick from "../Components/DatePick";
 import moment from "moment";
 import { Button } from "react-bootstrap";
 
-const Profile = () => {
+const Profile = ({ setKartCount }) => {
   let { user, logoutUser } = useContext(AuthContext);
   let [history, setHistory] = useState([]);
 
@@ -20,8 +20,51 @@ const Profile = () => {
   // }
 
   useEffect(() => {
+    getKart();
     getHistory();
   }, []);
+
+  function authKart() {
+    console.log("clicked");
+  }
+
+  let getKart = async () => {
+    let response = await fetch(
+      "https://pertinacity1.pythonanywhere.com/onwearkartapi",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    let data = await response.json();
+
+    var kartLoop = [];
+
+    if (response.status === 200) {
+      for (var i = 0; i < data.length; i++) {
+        // get username from authcontext
+
+        if (data[i]["customerUsername"] === user.username) {
+          var pd = data[i]["products"];
+          var b = JSON.parse(pd.replace(/'/g, '"'));
+          var c = Object.keys(b);
+          var res = c.map((i) => Number(i));
+          // var res = c.map(function (v) {
+          //   return parseInt(v, 10);
+          // });
+          // setkart takes integers
+          kartLoop = res;
+        }
+
+        setKartCount(kartLoop, b);
+      }
+    } else if (response.statusText === "Unauthorized") {
+      console.log("200 error");
+    }
+  };
 
   let getHistory = async () => {
     let response = await fetch(
@@ -43,6 +86,11 @@ const Profile = () => {
     }
   };
 
+  function clearKart() {
+    setKartCount([], []);
+    logoutUser();
+  }
+
   return (
     <div className="container text-dark">
       <div className="text-center pt-5">
@@ -53,7 +101,7 @@ const Profile = () => {
         *
       </div>
       <p
-        onClick={logoutUser}
+        onClick={clearKart}
         style={{ cursor: "pointer", color: "red" }}
         className="text-end  "
       >

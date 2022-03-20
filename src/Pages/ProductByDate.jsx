@@ -7,21 +7,18 @@ import { Link, useLocation } from "react-router-dom";
 const ProductByDate = ({ queryDate, rentDate, items }) => {
   let [queryItems, setqueryItems] = useState(items);
 
+  // state is carrying over from front page selection
   const location = useLocation();
   const state = location.state;
-  // console.log(state);
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     if (state !== null) {
       clickTerm(state);
+      console.log(state);
     }
   }, []);
-
-  // console.log(items);
-
-  var groupOne = items.slice(0, 3);
 
   function clickTerm(searchTerm) {
     window.scrollTo(0, 0);

@@ -87,7 +87,7 @@ const Landing = ({ rentDate, queryDate }) => {
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">Update Complete</small>
             </Card.Footer>
           </Card>
 
@@ -104,7 +104,7 @@ const Landing = ({ rentDate, queryDate }) => {
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">Update Complete</small>
             </Card.Footer>
           </Card>
           <Card>
@@ -121,7 +121,7 @@ const Landing = ({ rentDate, queryDate }) => {
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">Update Complete</small>
             </Card.Footer>
           </Card>
           <Card>
@@ -139,7 +139,7 @@ const Landing = ({ rentDate, queryDate }) => {
               <Card.Text></Card.Text>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">Update Complete</small>
             </Card.Footer>
           </Card>
         </CardGroup>

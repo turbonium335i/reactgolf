@@ -53,14 +53,34 @@ const Footer = () => (
           <h5 className="text-uppercase">Social</h5>
           <ul className="list-unstyled">
             <li>
-              <BsInstagram /> <a href="#!">Instagram</a>
+              <BsInstagram />{" "}
+              <a
+                href="#!"
+                style={{ textDecoration: "none" }}
+                className="text-dark"
+              >
+                Instagram
+              </a>
             </li>
             <li>
               <BsFillChatDotsFill className="text-warning" />{" "}
-              <a href="#!">Kakao</a>
+              <a
+                href="#!"
+                style={{ textDecoration: "none" }}
+                className="text-dark"
+              >
+                카카오: onwear
+              </a>
             </li>
             <li>
-              <BsFillGeoFill className="text-success" /> <a href="#!">Naver</a>
+              <BsFillGeoFill className="text-success" />{" "}
+              <a
+                href="#!"
+                style={{ textDecoration: "none" }}
+                className="text-dark"
+              >
+                Naver
+              </a>
             </li>
           </ul>
         </div>
