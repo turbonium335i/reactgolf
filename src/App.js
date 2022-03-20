@@ -49,7 +49,7 @@ var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
 function App() {
   const [kart, setkart] = useState([]);
-  const [kartDates, setKartDates] = useState({});
+  const [kartDates, setKartDates] = useState({ z: "z" });
 
   let [items, setItems] = useState([]);
   const [success, setSuccess] = useState(false);
@@ -102,7 +102,7 @@ function App() {
 
   const onAdd = (id, rDates) => {
     const newkartItem = { id };
-    console.log(kartDates);
+
     kartDates[id] = rDates;
     console.log(kartDates);
 

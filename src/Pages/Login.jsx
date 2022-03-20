@@ -58,7 +58,11 @@ const Login = ({ mstat, messageback }) => {
           }}
         />
         &nbsp;
-        <button type="submit" {...disableBtnProps} className="btn-sm ">
+        <button
+          type="submit"
+          {...disableBtnProps}
+          className="btn-sm  border border-success"
+        >
           Login
         </button>
       </form>

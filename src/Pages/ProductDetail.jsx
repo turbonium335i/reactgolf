@@ -43,7 +43,7 @@ const ProductDetail = ({
   // }
 
   let addToCart = async (id, title) => {
-    console.log("addtocart ", id);
+    console.log("addtocart: ", id);
 
     onAdd(id, [
       format(subDays(startDate, 2), "MM-dd-yyyy"),
@@ -193,7 +193,7 @@ const ProductDetail = ({
             <h6 style={{ whiteSpace: "pre-wrap" }}>{task.description_long}</h6>
           </pre>
           <br />
-          <h6>{task.description_short}</h6>
+          <h6 style={{ whiteSpace: "pre-wrap" }}>{task.description_short}</h6>
           <br />
           <br />
           <br />

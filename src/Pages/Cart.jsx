@@ -95,8 +95,10 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                   className="text-decoration-none"
                 >
                   <span className="fw-bold">{item.brand} </span>- {item.title}{" "}
-                  <br /> <span className="text-secondary"> </span>
-                  {kartDates[item.id][0]} &#8594; {kartDates[item.id][1]}
+                  <br /> <span className="text-secondary"> </span>{" "}
+                  <span className="text-dark">
+                    {kartDates[item.id][0]} &#8594; {kartDates[item.id][1]}
+                  </span>
                 </Link>
               </td>
               {/* <td>{item.description_short}</td> */}
