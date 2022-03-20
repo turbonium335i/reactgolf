@@ -55,7 +55,7 @@ const ProductDetail = ({
     // if there is a user
     if (user !== null) {
       let response = await fetch(
-        "http://127.0.0.1:8000/addtokartapi",
+        "https://pertinacity1.pythonanywhere.com/addtokartapi",
 
         {
           method: "POST",
