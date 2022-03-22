@@ -20,15 +20,25 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
   }
 
   function m_Completepayment(FormOrJson, closeEvent) {
-    var frm = api_userName;
+    console.log(FormOrJson);
+    var frm = document.getElementById("paypay");
 
     window.GetField(frm, FormOrJson);
+    console.log(frm, FormOrJson);
 
-    if (frm.res_cd.value === "0000") {
-      frm.submit();
-    } else {
-      alert("[" + frm.res_cd.value + "] " + frm.res_msg.value);
-    }
+    // if (frm.res_cd.value === "0000") {
+    //   document
+    //     .getElementById("paypay")
+    //     .addEventListener("click", function (event) {
+    //       event.preventDefault();
+    //     });
+
+    //   console.log(frm, FormOrJson);
+
+    //   // frm.submit();
+    // } else {
+    //   alert("[" + frm.res_cd.value + "] " + frm.res_msg.value);
+    // }
   }
 
   function jsf__pay(e) {

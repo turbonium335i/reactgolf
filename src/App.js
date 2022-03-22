@@ -267,7 +267,7 @@ function App() {
                     style={{ textDecoration: "none" }}
                     onClick={() => setExpanded(false)}
                   >
-                    <UserID />
+                    <UserID setKartCount={setKartCount} />
                   </Link>{" "}
                   &nbsp;
                 </span>
@@ -382,13 +382,7 @@ function App() {
               <Route path="private" element={<Private />} />
               <Route
                 path="profile"
-                element={
-                  <Profile
-                    kart={kart}
-                    items={items}
-                    setKartCount={setKartCount}
-                  />
-                }
+                element={<Profile setKartCount={setKartCount} />}
               />
             </Route>
           </Routes>
