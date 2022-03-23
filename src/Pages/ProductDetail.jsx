@@ -22,13 +22,13 @@ const ProductDetail = ({
   upDate,
   startDate,
 }) => {
-  const [task, setTask] = useState({});
-  const [tagOne, setTagOne] = useState("1");
-  const [tagTwo, setTagTwo] = useState("1");
-
   const params = useParams();
   const navigate = useNavigate();
   let { user } = useContext(AuthContext);
+  const [task, setTask] = useState(params.id);
+  const [tagOne, setTagOne] = useState("1");
+  const [tagTwo, setTagTwo] = useState("1");
+  const [currentItem, setCurrentItem] = useState(params.id);
 
   // const [startDate, setStartDate] = useState("");
   // const [endDate, setEndDate] = useState("");
@@ -75,7 +75,7 @@ const ProductDetail = ({
       );
 
       let data = await response.json();
-      console.log(data);
+      // console.log(data);
     }
   };
 
@@ -93,14 +93,14 @@ const ProductDetail = ({
   }
 
   useEffect(() => {
-    // if (true) {
-    //   window.scrollTo(0, 0);
-    // }
-
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == params.id) {
         setTask(items[i]);
         convert(items[i]["rsvJson"]);
+        var b = items[i]["rsvJson"].replace(/'/g, '"');
+        var c = JSON.parse(b);
+        // console.log(c["outDates"]);
+        // console.log(items[i].tagWith, items[i].tagWithTwo);
       }
       if (items[i].id == task.tagWith) {
         setTagOne(items[i]);
@@ -111,7 +111,7 @@ const ProductDetail = ({
     }
   });
 
-  // prevent render each time }, []);
+  // prevent render each time }, [ this depends on teh varibles set up top]);
 
   return (
     <div className="container bg-light mb-3">
@@ -159,7 +159,12 @@ const ProductDetail = ({
           </h5>
           <br />
           <div className="text-center">
-            <DatePick upDate={upDate} startDate={startDate} />
+            <DatePick
+              upDate={upDate}
+              startDate={startDate}
+              items={items}
+              currentItem={currentItem}
+            />
             <p className="text-success">
               {format(subDays(startDate, 2), "MM-dd-yyyy")}{" "}
               <span className="text-dark fs-5">&#8594;</span>{" "}
