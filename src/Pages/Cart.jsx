@@ -11,45 +11,62 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
 
   let { user } = useContext(AuthContext);
 
-  var api_userName = "";
-
-  function handleSubmit() {
-    api_userName = document.getElementById("paypay");
-    console.log(api_userName);
-    jsf__pay(api_userName);
-  }
-
   function m_Completepayment(FormOrJson, closeEvent) {
-    console.log(FormOrJson);
-    var frm = document.getElementById("paypay");
+    var frm = document.order_info;
 
     window.GetField(frm, FormOrJson);
-    console.log(frm, FormOrJson);
 
-    // if (frm.res_cd.value === "0000") {
-    //   document
-    //     .getElementById("paypay")
-    //     .addEventListener("click", function (event) {
-    //       event.preventDefault();
-    //     });
+    if (frm.res_cd.value == "0000") {
+      document
+        .getElementById("paypay")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+        });
 
-    //   console.log(frm, FormOrJson);
+      console.log(frm);
 
-    //   // frm.submit();
-    // } else {
-    //   alert("[" + frm.res_cd.value + "] " + frm.res_msg.value);
-    // }
+      // frm.submit();
+
+      const formData = new FormData(frm);
+
+      let getResponse = async () => {
+        let response = await fetch(
+          "https://pertinacity1.pythonanywhere.com/payprocess",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        let data = await response.json();
+
+        if (response.status === 200) {
+          console.log(data);
+          document.getElementById("rBox").innerHTML = data;
+          closeEvent();
+        } else {
+          console.log("200 error");
+          alert("Payment Processing Error. Try again in 5 minutes.");
+          navigate("/cart");
+        }
+      };
+
+      getResponse();
+    } else {
+      alert("[" + frm.res_cd.value + "] " + frm.res_msg.value);
+
+      closeEvent();
+    }
   }
 
-  function jsf__pay(e) {
-    console.log("fired: ", e);
+  function jsf__pay(form) {
+    console.log("fired: ", form);
 
     try {
-      window.KCP_Pay_Execute(e);
+      window.KCP_Pay_Execute(form);
       // m_Completepayment();
       // navigate("/paymentsuccess");
-    } catch (er) {
-      console.log(er);
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -65,6 +82,8 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
   for (var i = 0; i < items.length; i++) {
     if (kart.includes(items[i].id)) {
       shopKart.push(items[i]);
+      console.log(shopKart);
+
       subTotal += items[i].rentalprice;
     }
   }
@@ -141,7 +160,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
           </Button>{" "}
         </Link>
 
-        <Button
+        {/* <Button
           variant="success"
           size="lg"
           onClick={() => {
@@ -149,16 +168,16 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
           }}
         >
           CheckOut
-        </Button>
+        </Button> */}
       </div>
 
       <br />
-      <div className="text-success text-end">
+      {/* <div className="text-success text-end">
         <h6 className="my-0 d-inline ">Promo code: </h6>
         <h5 className="border d-inline ">$$DISCOUNT</h5>
         <br />
-      </div>
-      <div className="text-secondary text-end">
+      </div> */}
+      <div className="text-secondary text-end ">
         <h5>
           SubTotal:{" "}
           <NumberFormat
@@ -184,60 +203,34 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             displayType={"text"}
             thousandSeparator={true}
             prefix={"₩"}
+            className="text-success"
           />{" "}
         </h3>
       </div>
       <br />
+      <div className="text-center fw-bold">Payment & Shipping Information</div>
       <form
         name="order_info"
         method="post"
+        action="https://pertinacity1.pythonanywhere.com/payprocess"
         id="paypay"
-        action="https://stg-spl.kcp.co.kr/gw/enc/v1/payment"
       >
         <div className="  row ">
           <div className="col-6   text-end">
             {" "}
-            <label htmlFor="ordr_idxx">ordr_idxx</label> <br />
+            <label htmlFor="buyr_name">Name:</label> <br />
             <input
               type="text"
-              name="ordr_idxx"
-              defaultValue="ONWEAR1001"
-              maxLength={40}
+              name="buyr_name"
+              placeholder="Enter Name Here"
             />{" "}
             <br />
-            <label htmlFor="good_name">good_name</label> <br />
-            <input type="text" name="good_name" defaultValue="운동화" /> <br />
-            <label htmlFor="good_mny">good_mny</label> <br />
+            <label htmlFor="good_mny">Total: </label> <br />
             <input
               type="text"
               name="good_mny"
               defaultValue={subTotal + 6000}
               maxLength={9}
-            />{" "}
-            <br />
-            <label htmlFor="buyr_name">buyr_name</label> <br />
-            <input type="text" name="buyr_name" defaultValue="홍길동" /> <br />
-          </div>
-          <div className="col-6">
-            <label htmlFor="buyr_tel1">buyr_tel1</label> <br />
-            <input
-              type="text"
-              name="buyr_tel1"
-              defaultValue="02-0000-0000"
-            />{" "}
-            <br />
-            <label htmlFor="buyr_tel2">buyr_tel2</label> <br />
-            <input
-              type="text"
-              name="buyr_tel2"
-              defaultValue="010-0000-0000"
-            />{" "}
-            <br />
-            <label htmlFor="buyr_mail">buyr_mail</label> <br />
-            <input
-              type="text"
-              name="buyr_mail"
-              defaultValue="test@test.co.kr"
             />{" "}
             <br />
             <br />
@@ -251,6 +244,42 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               name="pay_method"
               defaultValue={100000000000}
             />
+            <label htmlFor="ordr_idxx"> </label> <br />
+            <input
+              type="hidden"
+              name="ordr_idxx"
+              defaultValue="ONWEAR1001"
+              maxLength={40}
+            />{" "}
+            <br />
+            <label htmlFor="good_name"> </label> <br />
+            <input type="hidden" name="good_name" defaultValue="운동화" />{" "}
+            <br />
+          </div>
+          <div className="col-6">
+            <label htmlFor="buyr_tel1">Phone:</label> <br />
+            <input
+              type="text"
+              name="buyr_tel1"
+              defaultValue="010-0000-0000"
+            />{" "}
+            <br />
+            <label htmlFor="buyr_mail">Email:</label> <br />
+            <input
+              type="text"
+              name="buyr_mail"
+              defaultValue="test@test.co.kr"
+            />{" "}
+            <br />
+            <br />
+            <label htmlFor="buyr_tel2"> </label> <br />
+            <input
+              type="hidden"
+              name="buyr_tel2"
+              defaultValue="010-0000-0000"
+            />{" "}
+            <br />
+            <br />
             {/* 가맹점 정보 설정*/}
             <input type="hidden" name="site_cd" defaultValue="T0000" />
             <input type="hidden" name="site_name" defaultValue="TEST SITE" />
@@ -262,19 +291,30 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input type="hidden" name="ret_pay_method" value="" />
             <input type="hidden" name="tran_cd" value="" />
             <input type="hidden" name="use_pay_method" value="" />
-            <br />
-            <Button
-              variant="success"
-              size="lg"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              CheckOut
-            </Button>
-          </div>
-
+            <input type="hidden" name="userName" value={kartUserName} />
+            <input
+              type="hidden"
+              name="shopKart"
+              value={JSON.stringify(shopKart)}
+            />
+          </div>{" "}
+          <label htmlFor="address">Address:</label> <br />
+          <input
+            type="text"
+            name="address"
+            placeholder="Enter Shipping Address Here"
+            className="mb-3"
+          />{" "}
           <br />
+          <Button
+            variant="success"
+            size="lg"
+            onClick={() => {
+              jsf__pay(document.order_info);
+            }}
+          >
+            CheckOut
+          </Button>
         </div>{" "}
       </form>
     </div>

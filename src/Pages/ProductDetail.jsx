@@ -99,7 +99,7 @@ const ProductDetail = ({
         convert(items[i]["rsvJson"]);
         var b = items[i]["rsvJson"].replace(/'/g, '"');
         var c = JSON.parse(b);
-        // console.log(c["outDates"]);
+        console.log(c["outDates"]);
         // console.log(items[i].tagWith, items[i].tagWithTwo);
       }
       if (items[i].id == task.tagWith) {

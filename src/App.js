@@ -377,6 +377,7 @@ function App() {
                 <CheckOut kart={kart} items={items} onDelete={onDelete} />
               }
             />
+
             <Route path="paymentsuccess" element={<PaymentSuccess />} />
             <Route element={<PrivateRoute />}>
               <Route path="private" element={<Private />} />

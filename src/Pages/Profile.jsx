@@ -8,9 +8,6 @@ const Profile = ({ setKartCount }) => {
   let { user, logoutUser } = useContext(AuthContext);
   let [history, setHistory] = useState([]);
 
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-
   // function DateOut(s, e) {
   //   setStartDate(moment(s).format("MM-DD-YYYY"));
   //   setEndDate(moment(e).format("MM-DD-YYYY"));
@@ -93,15 +90,29 @@ const Profile = ({ setKartCount }) => {
     logoutUser();
   }
 
+  function convert(dat) {
+    // make json notation has double quotes, this freaken took forever to find out
+    // var b = dat.replace(/'/g, '"');
+    // var c = JSON.parse(b);
+    // var c = JSON.parse(JSON.stringify(data));
+    // console.log(typeof c);
+    // console.log(c["outDates"]);
+  }
+  if (history.length > 0) {
+    // console.log(history[0]["orderJson"]);
+
+    // var p = JSON.parse(
+    //   JSON.stringify(history[0].orderJson.slice(0, -1).slice(1))
+    // );
+    // var b = p.replace(/'/g, '"');
+    // var c = JSON.parse(b);
+    // console.log(p);
+
+    console.log(history[0]["orderJson"]);
+  }
+
   return (
     <div className="container text-dark">
-      <div className="text-center pt-5">
-        {/* <DatePick DateOut={DateOut} /> */}
-        {/* <p className="text-success">
-          {startDate}--{endDate}
-        </p> */}
-        *
-      </div>
       <p
         onClick={clearKart}
         style={{ cursor: "pointer", color: "red" }}
@@ -130,10 +141,13 @@ const Profile = ({ setKartCount }) => {
             >
               {index + 1}
               {". "}
-              {moment(item.date_ordered).format("MM-DD-YYYY - HH:mm")} <br />
-              {item.orderJson} <br />
+              {moment(item.date_ordered).format("MM-DD-YYYY - HH:mm")} -{" "}
               {item.customerName} <br />
-              {item.orderJson}
+              {/* {JSON.parse(
+                JSON.stringify(item.orderJson.slice(0, -1).slice(1))
+              )}{" "} */}
+              {item.orderJson.slice(0, 100)}
+              <br />
             </h5>
           );
         }
