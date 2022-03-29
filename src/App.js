@@ -56,6 +56,7 @@ function App() {
   const [messageInfo, setMessageInfo] = useState("0");
   const [queryDate, setQueryDate] = useState(today);
   const [expanded, setExpanded] = useState(false);
+  const [checkOutItems, setcheckOutItems] = useState([]);
 
   // date formating error cause by iso standards
   const [startDate, setStartDate] = useState(new Date());

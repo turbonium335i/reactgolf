@@ -215,7 +215,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
         action="https://pertinacity1.pythonanywhere.com/payprocess"
         id="paypay"
       >
-        <div className="  row px-3 ">
+        <div className="  row ">
           <div className="col-6   text-end">
             {" "}
             <label htmlFor="buyr_name">Name:</label> <br />
@@ -225,8 +225,17 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               placeholder="Enter Name Here"
             />{" "}
             <br />
-            <label htmlFor="pay_method" className="  text-success fw-bold">
-              Credit Card Total
+            <label htmlFor="good_mny">Total: </label> <br />
+            <input
+              type="text"
+              name="good_mny"
+              defaultValue={subTotal + 6000}
+              maxLength={9}
+            />{" "}
+            <br />
+            <br />
+            <label htmlFor="pay_method" className="border text-danger px-5">
+              Credit Card
             </label>{" "}
             <br />
             {/* 신용카드 */}
@@ -235,15 +244,6 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               name="pay_method"
               defaultValue={100000000000}
             />
-            <label htmlFor="good_mny"> </label>
-            <input
-              type="text"
-              name="good_mny"
-              value={subTotal + 6000}
-              readOnly
-              maxLength={9}
-            />{" "}
-            <br />
             <label htmlFor="ordr_idxx"> </label> <br />
             <input
               type="hidden"
@@ -261,14 +261,14 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input
               type="text"
               name="buyr_tel1"
-              placeholder="010-0000-0000"
+              defaultValue="010-0000-0000"
             />{" "}
             <br />
             <label htmlFor="buyr_mail">Email:</label> <br />
             <input
               type="text"
               name="buyr_mail"
-              placeholder="email@email.com"
+              defaultValue="test@test.co.kr"
             />{" "}
             <br />
             <br />
