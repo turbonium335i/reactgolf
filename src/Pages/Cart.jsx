@@ -43,6 +43,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
           console.log(data);
           document.getElementById("rBox").innerHTML = data;
           closeEvent();
+          alert("Please Wait for Response");
         } else {
           console.log("200 error");
           alert("Payment Processing Error. Try again in 5 minutes.");
@@ -91,6 +92,19 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
   function goToKart() {
     if (kart.length !== 0) {
       navigate("/checkout");
+    }
+  }
+
+  function checkForm() {
+    var fname = document.getElementById("f_name").value;
+    var fphone = document.getElementById("f_phone").value;
+    var femail = document.getElementById("f_email").value;
+    var fshipping = document.getElementById("f_shipping").value;
+
+    if (fname !== "" && fphone !== "" && femail !== "" && fshipping !== "") {
+      jsf__pay(document.order_info);
+    } else {
+      alert("Form Incomplete");
     }
   }
 
@@ -156,7 +170,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
       <div className="d-flex justify-content-end gap-2">
         <Link to={`/productbydate`}>
           <Button variant="secondary" size="lg">
-            Continue Shopping
+            &#8592; Continue Shopping
           </Button>{" "}
         </Link>
 
@@ -215,20 +229,14 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
         action="https://pertinacity1.pythonanywhere.com/payprocess"
         id="paypay"
       >
-        <div className="  row px-3 ">
-          <div className="col-6   text-end">
+        {" "}
+        <div className="d-flex justify-content-center">
+          <div className="  row px-3 w-75 align-center">
             {" "}
-            <label htmlFor="buyr_name">Name:</label> <br />
-            <input
-              type="text"
-              name="buyr_name"
-              placeholder="Enter Name Here"
-            />{" "}
-            <br />
-            <label htmlFor="pay_method" className="  text-success fw-bold">
-              Credit Card Total
-            </label>{" "}
-            <br />
+            <label
+              htmlFor="pay_method"
+              className="  text-success fw-bold"
+            ></label>{" "}
             {/* 신용카드 */}
             <input
               type="hidden"
@@ -242,6 +250,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               value={subTotal + 6000}
               readOnly
               maxLength={9}
+              className="border  border-light"
             />{" "}
             <br />
             <label htmlFor="ordr_idxx"> </label> <br />
@@ -251,17 +260,24 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               defaultValue="ONWEAR1001"
               maxLength={40}
             />{" "}
-            <br />
             <label htmlFor="good_name"> </label> <br />
-            <input type="hidden" name="good_name" defaultValue="운동화" />{" "}
+            <input type="hidden" name="good_name" defaultValue="온웨어 골프" />
+            <label htmlFor="buyr_name">Name:</label> <br />
+            <input
+              type="text"
+              name="buyr_name"
+              placeholder="Enter Name Here"
+              className="form-control"
+              id="f_name"
+            />{" "}
             <br />
-          </div>
-          <div className="col-6">
             <label htmlFor="buyr_tel1">Phone:</label> <br />
             <input
               type="text"
               name="buyr_tel1"
               placeholder="010-0000-0000"
+              className="form-control"
+              id="f_phone"
             />{" "}
             <br />
             <label htmlFor="buyr_mail">Email:</label> <br />
@@ -269,8 +285,18 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               type="text"
               name="buyr_mail"
               placeholder="email@email.com"
+              className="form-control"
+              id="f_email"
             />{" "}
             <br />
+            <label htmlFor="address">Address:</label> <br />
+            <input
+              type="text"
+              name="address"
+              placeholder="Enter Shipping Address Here"
+              className="form-control"
+              id="f_shipping"
+            />{" "}
             <br />
             <label htmlFor="buyr_tel2"> </label> <br />
             <input
@@ -278,8 +304,6 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               name="buyr_tel2"
               defaultValue="010-0000-0000"
             />{" "}
-            <br />
-            <br />
             {/* 가맹점 정보 설정*/}
             <input type="hidden" name="site_cd" defaultValue="T0000" />
             <input type="hidden" name="site_name" defaultValue="TEST SITE" />
@@ -297,25 +321,18 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               name="shopKart"
               value={JSON.stringify(shopKart)}
             />
+            <Button
+              variant="success"
+              size="lg"
+              onClick={() => {
+                // checkForm();
+                jsf__pay(document.order_info);
+              }}
+            >
+              CheckOut
+            </Button>
           </div>{" "}
-          <label htmlFor="address">Address:</label> <br />
-          <input
-            type="text"
-            name="address"
-            placeholder="Enter Shipping Address Here"
-            className="mb-3"
-          />{" "}
-          <br />
-          <Button
-            variant="success"
-            size="lg"
-            onClick={() => {
-              jsf__pay(document.order_info);
-            }}
-          >
-            CheckOut
-          </Button>
-        </div>{" "}
+        </div>
       </form>
     </div>
   );

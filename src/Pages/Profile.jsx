@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 const Profile = ({ setKartCount }) => {
   let { user, logoutUser } = useContext(AuthContext);
   let [history, setHistory] = useState([]);
+  let [loading, setLoading] = useState(true);
 
   // function DateOut(s, e) {
   //   setStartDate(moment(s).format("MM-DD-YYYY"));
@@ -63,6 +64,10 @@ const Profile = ({ setKartCount }) => {
     } else if (response.statusText === "Unauthorized") {
       console.log("200 error");
     }
+
+    if (loading) {
+      setLoading(false);
+    }
   };
 
   let getHistory = async () => {
@@ -78,7 +83,7 @@ const Profile = ({ setKartCount }) => {
     let data = await response.json();
 
     if (response.status === 200) {
-      setHistory(data);
+      setHistory(data.reverse());
       console.log("order history: ", data);
     } else if (response.statusText === "Unauthorized") {
       console.log("200 error");
@@ -104,11 +109,13 @@ const Profile = ({ setKartCount }) => {
     // var p = JSON.parse(
     //   JSON.stringify(history[0].orderJson.slice(0, -1).slice(1))
     // );
-    // var b = p.replace(/'/g, '"');
-    // var c = JSON.parse(b);
-    // console.log(p);
+    var p = history[0].orderJson;
+    // var s = p.replace(/'/g, '"');
+    // var c = JSON.parse("'" + p + "'");
+    // var d = JSON.parse(b);
+    // s = JSON.parse(s);
 
-    console.log(history[0]["orderJson"]);
+    console.log(p);
   }
 
   return (
@@ -121,7 +128,9 @@ const Profile = ({ setKartCount }) => {
         <Button variant="outline-danger">LogOut</Button>
       </p>
       Member Profile
-      {user ? (
+      {loading ? (
+        <h1 className="text-primary">Loading History...</h1>
+      ) : (
         <div>
           <h1 className="text-dark">
             {user.first_name}
@@ -129,8 +138,6 @@ const Profile = ({ setKartCount }) => {
           </h1>{" "}
           <h5 className="text-secondary"> {user.username}</h5>{" "}
         </div>
-      ) : (
-        <h1 className="text-secondary">Guest</h1>
       )}
       {history.map((item, index) => {
         if (item.customerUsername === user.username) {
