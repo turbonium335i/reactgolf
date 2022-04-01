@@ -49,7 +49,7 @@ var today = now.getFullYear() + "-" + mocheck + "-" + daycheck;
 
 function App() {
   const [kart, setkart] = useState([]);
-  const [kartDates, setKartDates] = useState({ z: "z" });
+  const [kartDates, setKartDates] = useState("empty");
 
   let [items, setItems] = useState([]);
   const [success, setSuccess] = useState(false);

@@ -112,7 +112,7 @@ const Landing = ({ rentDate, queryDate }) => {
             <Link to={"/productbydate"} state={"Bottom"}>
               <Card.Img
                 variant="top"
-                src="https://i.postimg.cc/j5dWrrkw/Quarter-G-s-Wrap-Skirt.jpg"
+                src="https://i.postimg.cc/zGbzFDP7/Pleats-Wrap-Skirt.jpg"
                 // src="https://i.postimg.cc/Pq62ZpW0/titleist.jpg"
               />{" "}
             </Link>

@@ -10,6 +10,11 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
   const navigate = useNavigate();
 
   let { user } = useContext(AuthContext);
+  console.log("kartDates", kartDates);
+
+  if (kartDates === "empty") {
+    navigate("/");
+  }
 
   function m_Completepayment(FormOrJson, closeEvent) {
     var frm = document.order_info;

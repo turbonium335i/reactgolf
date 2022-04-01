@@ -25,19 +25,21 @@ const PaymentSuccess = () => {
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-1 0A7 7 0 1 0 1 8a7 7 0 0 0 14 0z" />
                 </svg>
               </h1>
-              <h5>Thank You! Your order is Confirmed! </h5>{" "}
-              <span className="font-weight-bold d-block mt-4">Hello,</span>{" "}
+              <h5>감사합니다 주문이 완료되었습니다 </h5> <br />
               <span>
-                You order has been confirmed and will be shipped in next two
-                days!
+                <p>주문번호:</p>
+                <p>주문날짜:</p>
+                주문 후 한시간 내에 주문취소가 가능해요 이메일로 주문 확인서가
+                전송되었어요 주문해주셔서 감사합니다.
               </span>
               <hr className="text-success" />
               <p>
-                We will be sending shipping confirmation email when the item
-                shipped successfully!
+                주문하신 상품은 라운딩전날까지 배송완료됩니다. 즐거운 라운딩
+                하시고 빠른 반납을 부탁드리며 기간연장을 원하시면 미리
+                문의주세요.
               </p>
               <p className="font-weight-bold mb-0">
-                Thanks for shopping with us!
+                Thanks for rounding with us!
               </p>{" "}
               <span>OnWear Team</span>
             </div>

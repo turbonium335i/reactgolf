@@ -55,11 +55,11 @@ const Footer = () => (
             <li>
               <BsInstagram className="text-danger" />{" "}
               <a
-                href="https://www.instagram.com/gfore/?hl=en"
+                href="https://www.instagram.com/_on.wear/?hl=en"
                 style={{ textDecoration: "none" }}
                 className="text-dark fw-bold"
               >
-                Instagram : onWear
+                Instagram : _on.wear
               </a>
             </li>
             <li>
