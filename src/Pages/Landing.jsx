@@ -96,7 +96,7 @@ const Landing = ({ rentDate, queryDate }) => {
               <Card.Img
                 variant="top"
                 // src="https://i.postimg.cc/DfS1jYhW/pxgwo.jpg"
-                src="https://i.postimg.cc/j2YSS0M4/Essential-Tech-Round-Sweater.jpg"
+                src="https://i.postimg.cc/0yRHsT6n/Essential-Tech-Round-Sweater.jpg"
               />{" "}
             </Link>
             <Card.Body>

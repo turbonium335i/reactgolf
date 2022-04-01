@@ -128,7 +128,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               <td>{index + 1}</td>
               <td>
                 <Link to={`/productdetail/${item.id}`}>
-                  <img src={item.imglink} height="60vh" width="auto" />
+                  <img src={item.imglink} height="75vh" width="auto" />
                 </Link>
               </td>
               <td>

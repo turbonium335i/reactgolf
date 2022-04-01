@@ -46,7 +46,7 @@ const PaymentSuccess = () => {
               <span>
                 Need Help? visit our <a href="#"> FAQ</a>
               </span>{" "}
-              <span>12 June, 2022</span>{" "}
+              <span>OnWear 2022</span>{" "}
             </div>
           </div>
         </div>

@@ -127,7 +127,7 @@ const Profile = ({ setKartCount }) => {
       >
         <Button variant="outline-danger">LogOut</Button>
       </p>
-      Member Profile
+      <span className="text-primary "> {user.username}'s Profile</span>
       {loading ? (
         <h1 className="text-primary">Loading History...</h1>
       ) : (
