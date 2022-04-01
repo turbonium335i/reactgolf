@@ -222,6 +222,12 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
         </h3>
       </div>
       <br />
+      <div className="text-center">
+        <img
+          src="https://i.postimg.cc/6QZcCSBW/cardcompany.png"
+          alt="card companies"
+        />
+      </div>
       <div className="text-center fw-bold">Payment & Shipping Information</div>
       <form
         name="order_info"

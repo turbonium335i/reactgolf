@@ -40,11 +40,11 @@ const Footer = () => (
             </li>
             <li>
               {" "}
-              <p className="mt-1">사업자 등록번호 : 846-14-01659</p>
+              {/* <p className="mt-1">사업자 등록번호 : 846-14-01659</p>
               <p className="mb-0">통신판매업신고증 : 1647-3048-0610-6685</p>
               <p className="mb-0">
                 서울특별시 서초구 강남대로53길 8, 7층 8-14호
-              </p>
+              </p> */}
             </li>
           </ul>
         </div>
@@ -53,13 +53,13 @@ const Footer = () => (
           <h5 className="text-uppercase">Social</h5>
           <ul className="list-unstyled">
             <li>
-              <BsInstagram />{" "}
+              <BsInstagram className="text-danger" />{" "}
               <a
-                href="#!"
+                href="https://www.instagram.com/gfore/?hl=en"
                 style={{ textDecoration: "none" }}
-                className="text-dark"
+                className="text-dark fw-bold"
               >
-                Instagram
+                Instagram : onWear
               </a>
             </li>
             <li>
@@ -69,7 +69,7 @@ const Footer = () => (
                 style={{ textDecoration: "none" }}
                 className="text-dark"
               >
-                카카오: onwear
+                <span className="fw-bold"> 카카오: onWear</span>
               </a>
             </li>
             <li>
@@ -86,10 +86,19 @@ const Footer = () => (
         </div>
       </div>
     </div>
-
+    <br />
+    <div className="container text-center">
+      사업자 등록번호 : 846-14-01659 통신판매업신고증 : 1647-3048-0610-6685
+      <br />
+      서울특별시 서초구 강남대로53길 8, 7층 8-14호
+    </div>
     <div className="footer-copyright text-center py-3">
       © 2022 Copyright:
-      <a href="https://www.onwear.co.kr" style={{ textDecoration: "none" }}>
+      <a
+        href="https://www.onwear.co.kr"
+        style={{ textDecoration: "none" }}
+        className="text-success fw-bold"
+      >
         &nbsp; OnWear.co.kr
       </a>
     </div>
