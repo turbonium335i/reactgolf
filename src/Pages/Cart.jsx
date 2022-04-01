@@ -87,16 +87,18 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
 
   for (var i = 0; i < items.length; i++) {
     if (kart.includes(items[i].id)) {
+      // convert nested JSON into object
+
+      // if (typeof items[i].rsvJson === "string") {
+      //   var b = JSON.parse(items[i].rsvJson.replace(/'/g, '"'));
+      //   items[i].rsvJson = b;
+      // }
+
+      items[i].rsvJson = 0;
+      console.log(items[i]);
       shopKart.push(items[i]);
-      console.log(shopKart);
 
       subTotal += items[i].rentalprice;
-    }
-  }
-
-  function goToKart() {
-    if (kart.length !== 0) {
-      navigate("/checkout");
     }
   }
 
@@ -331,6 +333,11 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               type="hidden"
               name="shopKart"
               value={JSON.stringify(shopKart)}
+            />
+            <input
+              type="hidden"
+              name="kartDates"
+              value={JSON.stringify(kartDates)}
             />
             <Button
               variant="success"

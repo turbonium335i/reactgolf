@@ -69,7 +69,7 @@ const Footer = () => (
                 style={{ textDecoration: "none" }}
                 className="text-dark"
               >
-                <span className="fw-bold"> 카카오: onWear</span>
+                <span className="fw-bold"> 카카오: onwear</span>
               </a>
             </li>
             <li>

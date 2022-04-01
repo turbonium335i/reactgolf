@@ -84,7 +84,6 @@ const Profile = ({ setKartCount }) => {
 
     if (response.status === 200) {
       setHistory(data.reverse());
-      console.log("order history: ", data);
     } else if (response.statusText === "Unauthorized") {
       console.log("200 error");
     }
@@ -115,7 +114,7 @@ const Profile = ({ setKartCount }) => {
     // var d = JSON.parse(b);
     // s = JSON.parse(s);
 
-    console.log(p);
+    console.log(history);
   }
 
   return (
