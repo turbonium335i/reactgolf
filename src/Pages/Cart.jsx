@@ -48,7 +48,6 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
           console.log(data);
           document.getElementById("rBox").innerHTML = data;
           closeEvent();
-          alert("Please Wait for Response");
         } else {
           console.log("200 error");
           alert("Payment Processing Error. Try again in 5 minutes.");
@@ -66,6 +65,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
 
   function jsf__pay(form) {
     console.log("fired: ", form);
+    alert("Please Wait for a Response");
 
     try {
       window.KCP_Pay_Execute(form);

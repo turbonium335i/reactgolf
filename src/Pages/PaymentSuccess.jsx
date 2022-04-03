@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const PaymentSuccess = () => {
   return (
     <div className="container mt-5 mb-5">
@@ -27,8 +29,6 @@ const PaymentSuccess = () => {
               </h1>
               <h5>감사합니다 주문이 완료되었습니다 </h5> <br />
               <span>
-                <p>주문번호:</p>
-                <p>주문날짜:</p>
                 주문 후 한시간 내에 주문취소가 가능해요 이메일로 주문 확인서가
                 전송되었어요 주문해주셔서 감사합니다.
               </span>
@@ -37,7 +37,10 @@ const PaymentSuccess = () => {
                 주문하신 상품은 라운딩전날까지 배송완료됩니다. 즐거운 라운딩
                 하시고 빠른 반납을 부탁드리며 기간연장을 원하시면 미리
                 문의주세요.
-              </p>
+              </p>{" "}
+              <Link to="/profile">&#8594; Order History</Link>
+              <br />
+              <br />
               <p className="font-weight-bold mb-0">
                 Thanks for rounding with us!
               </p>{" "}

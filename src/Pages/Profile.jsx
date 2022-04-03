@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, Fragment } from "react";
 import AuthContext from "../Context/AuthContext";
 import DatePick from "../Components/DatePick";
 import moment from "moment";
@@ -8,6 +8,7 @@ const Profile = ({ setKartCount }) => {
   let { user, logoutUser } = useContext(AuthContext);
   let [history, setHistory] = useState([]);
   let [loading, setLoading] = useState(true);
+  let [orderJ, setOrderJ] = useState(null);
 
   // function DateOut(s, e) {
   //   setStartDate(moment(s).format("MM-DD-YYYY"));
@@ -82,39 +83,34 @@ const Profile = ({ setKartCount }) => {
     );
     let data = await response.json();
 
+    var hisLoop = [];
     if (response.status === 200) {
       setHistory(data.reverse());
+      for (var i = 0; i < data.length; i++) {
+        if (data[i]["customerUsername"] === user.username) {
+          console.log(data[i]);
+          if (typeof data[i].orderJson === "string") {
+            data[i].orderJson = JSON.parse(
+              data[i].orderJson.replace(/'/g, '"')
+            );
+
+            data[i].orderKartDates = JSON.parse(
+              data[i].orderKartDates.replace(/'/g, '"')
+            );
+
+            hisLoop.push(data[i]);
+          }
+        }
+      }
     } else if (response.statusText === "Unauthorized") {
       console.log("200 error");
     }
+    setOrderJ(hisLoop);
   };
 
   function clearKart() {
     setKartCount([], []);
     logoutUser();
-  }
-
-  function convert(dat) {
-    // make json notation has double quotes, this freaken took forever to find out
-    // var b = dat.replace(/'/g, '"');
-    // var c = JSON.parse(b);
-    // var c = JSON.parse(JSON.stringify(data));
-    // console.log(typeof c);
-    // console.log(c["outDates"]);
-  }
-  if (history.length > 0) {
-    // console.log(history[0]["orderJson"]);
-
-    // var p = JSON.parse(
-    //   JSON.stringify(history[0].orderJson.slice(0, -1).slice(1))
-    // );
-    var p = history[0].orderJson;
-    // var s = p.replace(/'/g, '"');
-    // var c = JSON.parse("'" + p + "'");
-    // var d = JSON.parse(b);
-    // s = JSON.parse(s);
-
-    console.log(history);
   }
 
   return (
@@ -135,29 +131,40 @@ const Profile = ({ setKartCount }) => {
             {user.first_name}
             {"'s Order History"}
           </h1>{" "}
-          <h5 className="text-secondary"> {user.username}</h5>{" "}
+          <hr />
         </div>
       )}
-      {history.map((item, index) => {
-        if (item.customerUsername === user.username) {
-          return (
-            <h5
-              key={item.id}
-              className="border-bottom border-secondary pb-3 text-secondary"
-            >
-              {index + 1}
-              {". "}
-              {moment(item.date_ordered).format("MM-DD-YYYY - HH:mm")} -{" "}
-              {item.customerName} <br />
-              {/* {JSON.parse(
-                JSON.stringify(item.orderJson.slice(0, -1).slice(1))
-              )}{" "} */}
-              {item.orderJson.slice(0, 100)}
-              <br />
-            </h5>
-          );
-        }
-      })}
+      {orderJ &&
+        orderJ.map((item, index) => {
+          if (item.customerUsername === user.username) {
+            return (
+              <div key={item.id} className="   text-primary">
+                {index + 1}
+                {". "}
+                {moment(item.date_ordered).format("MM-DD-YYYY - HH:mm")} -{" "}
+                {item.customerName} / Order Status:
+                <span className="text-dark  fw-bold">
+                  {" "}
+                  {item.orderStatus}
+                </span>{" "}
+                <br />
+                {item.orderJson.map((s, index) => (
+                  <Fragment key={index}>
+                    <p className="my-0 text-secondary">
+                      <img src={s.imglink} height="60vh" width="auto" /> &nbsp;
+                      {index + 1}. {s.brand} {s.title} {s.rentalprice} <br />
+                      <p className="text-warning text-center my-0 bg-secondary">
+                        {" "}
+                        {item.orderKartDates[s.id][0]} &#8594;{" "}
+                        {item.orderKartDates[s.id][1]}
+                      </p>
+                    </p>
+                  </Fragment>
+                ))}
+              </div>
+            );
+          }
+        })}
     </div>
   );
 };
