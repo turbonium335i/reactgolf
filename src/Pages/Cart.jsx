@@ -95,7 +95,6 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
       // }
 
       items[i].rsvJson = 0;
-      console.log(items[i]);
       shopKart.push(items[i]);
 
       subTotal += items[i].rentalprice;

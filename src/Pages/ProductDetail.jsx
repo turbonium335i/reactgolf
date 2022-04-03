@@ -87,6 +87,7 @@ const ProductDetail = ({
 
   function convert(data) {
     // make json notation has double quotes, this freaken took forever to find out
+
     var b = data.replace(/'/g, '"');
     var c = JSON.parse(b);
     // console.log(c["outDates"]);
@@ -96,10 +97,12 @@ const ProductDetail = ({
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == params.id) {
         setTask(items[i]);
-        convert(items[i]["rsvJson"]);
-        var b = items[i]["rsvJson"].replace(/'/g, '"');
-        var c = JSON.parse(b);
-        console.log(c["outDates"]);
+        if (typeof items[i]["rsvJson"] === "string") {
+          var b = items[i]["rsvJson"].replace(/'/g, '"');
+          var c = JSON.parse(b);
+          console.log(c["outDates"]);
+        }
+
         // console.log(items[i].tagWith, items[i].tagWithTwo);
       }
       if (items[i].id == task.tagWith) {

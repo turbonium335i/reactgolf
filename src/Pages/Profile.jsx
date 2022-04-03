@@ -88,7 +88,6 @@ const Profile = ({ setKartCount }) => {
       setHistory(data.reverse());
       for (var i = 0; i < data.length; i++) {
         if (data[i]["customerUsername"] === user.username) {
-          console.log(data[i]);
           if (typeof data[i].orderJson === "string") {
             data[i].orderJson = JSON.parse(
               data[i].orderJson.replace(/'/g, '"')
@@ -153,11 +152,11 @@ const Profile = ({ setKartCount }) => {
                     <p className="my-0 text-secondary">
                       <img src={s.imglink} height="60vh" width="auto" /> &nbsp;
                       {index + 1}. {s.brand} {s.title} {s.rentalprice} <br />
-                      <p className="text-warning text-center my-0 bg-secondary">
+                      <li className="text-warning text-center my-0 bg-secondary">
                         {" "}
                         {item.orderKartDates[s.id][0]} &#8594;{" "}
                         {item.orderKartDates[s.id][1]}
-                      </p>
+                      </li>
                     </p>
                   </Fragment>
                 ))}

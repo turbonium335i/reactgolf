@@ -20,9 +20,11 @@ const DatePick = ({ upDate, startDate, items, currentItem }) => {
 
     for (let i = 0; i < items.length; i++) {
       if (items[i].id == currentItem) {
-        var b = items[i]["rsvJson"].replace(/'/g, '"');
-        var c = JSON.parse(b);
-        blockDates = c["outDates"];
+        if (typeof items[i]["rsvJson"] === "string") {
+          var b = items[i]["rsvJson"].replace(/'/g, '"');
+          var c = JSON.parse(b);
+          blockDates = c["outDates"];
+        }
       }
     }
 
