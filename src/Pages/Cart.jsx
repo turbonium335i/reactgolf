@@ -391,6 +391,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                   // checkForm();
                   document.order_info.action =
                     "https://pertinacity1.pythonanywhere.com/kcp_api_trade_reg";
+                  document.order_info.pay_method.value = "CARD";
                   document.order_info.submit();
                 }}
               >
