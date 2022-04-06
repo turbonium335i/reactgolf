@@ -376,6 +376,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 size="md"
                 onClick={() => {
                   // checkForm();
+                  document.order_info.pay_method.value = 100000000000;
                   document.order_info.action =
                     "https://pertinacity1.pythonanywhere.com/payprocess";
                   jsf__pay(document.order_info);
