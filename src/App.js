@@ -33,6 +33,7 @@ import ProductByDate from "./Pages/ProductByDate";
 import SignUpLink from "./Pages/SignUpLink";
 
 import { addDays, format, subDays } from "date-fns";
+import MobilePay from "./Pages/MobilePay";
 
 var now = new Date();
 var daycheck = now.getDate();
@@ -380,6 +381,7 @@ function App() {
             />
 
             <Route path="paymentsuccess" element={<PaymentSuccess />} />
+            <Route path="mobilepay" element={<MobilePay />} />
             <Route element={<PrivateRoute />}>
               <Route path="private" element={<Private />} />
               <Route

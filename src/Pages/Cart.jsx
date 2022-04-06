@@ -114,6 +114,31 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
     }
   }
 
+  function sendMobile() {
+    let formData2 = new FormData(document.order_info);
+
+    // for (var [key, value] of formData2.entries()) {
+    //   console.log(key, value);
+    // }
+
+    let submitMobile = async () => {
+      console.log("form submitted");
+      let response = await fetch(
+        "http://127.0.0.1:8000/paymobile",
+        // "http://127.0.0.1:8000/token/",
+
+        {
+          method: "POST",
+          body: formData2,
+        }
+      );
+      let data = await response.json();
+      console.log(data);
+    };
+
+    submitMobile();
+  }
+
   return (
     <div className="container">
       <Table striped bordered hover variant="light">
@@ -240,6 +265,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
         method="post"
         action="https://pertinacity1.pythonanywhere.com/payprocess"
         id="paypay"
+        encType="multipart/form-data"
       >
         {" "}
         <div className="d-flex justify-content-center">
@@ -330,6 +356,11 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input type="hidden" name="userName" value={kartUserName} />
             <input
               type="hidden"
+              name="Ret_URL"
+              value="http://localhost:3000/paymentsuccess"
+            />
+            <input
+              type="hidden"
               name="shopKart"
               value={JSON.stringify(shopKart)}
             />
@@ -338,16 +369,34 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               name="kartDates"
               value={JSON.stringify(kartDates)}
             />
-            <Button
-              variant="success"
-              size="lg"
-              onClick={() => {
-                // checkForm();
-                jsf__pay(document.order_info);
-              }}
-            >
-              CheckOut
-            </Button>
+            <div className="text-center">
+              {" "}
+              <Button
+                variant="outline-primary"
+                size="md"
+                onClick={() => {
+                  // checkForm();
+                  document.order_info.action =
+                    "https://pertinacity1.pythonanywhere.com/payprocess";
+                  jsf__pay(document.order_info);
+                }}
+              >
+                PC 결제
+              </Button>
+              &nbsp;
+              <Button
+                variant="outline-success"
+                size="md"
+                onClick={() => {
+                  // checkForm();
+                  document.order_info.action =
+                    "https://pertinacity1.pythonanywhere.com/paymobile";
+                  document.order_info.submit();
+                }}
+              >
+                Mobile 결제
+              </Button>
+            </div>
           </div>{" "}
         </div>
       </form>
