@@ -357,7 +357,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input
               type="hidden"
               name="Ret_URL"
-              value="https://www.onwear.co.kr/"
+              value="https://www.google.com"
             />
             <input
               type="hidden"
