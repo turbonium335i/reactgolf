@@ -390,7 +390,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 onClick={() => {
                   // checkForm();
                   document.order_info.action =
-                    "https://pertinacity1.pythonanywhere.com/paymobile";
+                    "https://pertinacity1.pythonanywhere.com/kcp_api_trade_reg";
                   document.order_info.submit();
                 }}
               >
