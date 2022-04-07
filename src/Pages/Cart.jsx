@@ -357,7 +357,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input
               type="hidden"
               name="Ret_URL"
-              value="https://www.google.com"
+              value="https://pertinacity1.pythonanywhere.com/mobile_complete"
             />
             <input
               type="hidden"
