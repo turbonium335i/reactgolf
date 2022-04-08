@@ -141,9 +141,8 @@ const Profile = ({ setKartCount }) => {
                 {index + 1}
                 {". "}
                 {moment(item.date_ordered).format("MM-DD-YYYY - HH:mm")} -{" "}
-                {item.customerName} / Order Status:
-                <span className="text-dark  fw-bold">
-                  {" "}
+                {item.customerName} / Order Status: &nbsp;
+                <span className="text-warning  fw-bold border bg-dark">
                   {item.orderStatus}
                 </span>{" "}
                 <br />
