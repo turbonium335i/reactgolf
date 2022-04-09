@@ -344,7 +344,11 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             />{" "}
             {/* 가맹점 정보 설정*/}
             <input type="hidden" name="site_cd" defaultValue="T0000" />
-            <input type="hidden" name="site_name" defaultValue="TEST SITE" />
+            <input
+              type="hidden"
+              name="site_name"
+              defaultValue="OnWear Premium"
+            />
             {/* 인증데이터 처리*/}
             <input type="hidden" name="res_cd" value="" />
             <input type="hidden" name="res_msg" value="" />

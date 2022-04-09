@@ -31,17 +31,29 @@ const UserID = ({ setKartCount }) => {
 
         if (data[i]["customerUsername"] === user.username) {
           var pd = data[i]["products"];
-          b = JSON.parse(pd.replace(/'/g, '"'));
-          var c = Object.keys(b);
-          var res = c.map((i) => Number(i));
+          try {
+            b = JSON.parse(pd.replace(/'/g, '"'));
+            var c = Object.keys(b);
+            var res = c.map((i) => Number(i));
+            kartLoop = res;
+            setKartCount(kartLoop, b);
+            break;
+          } catch {
+            setKartCount(kartLoop, b);
+            break;
+          }
+          // b = JSON.parse(pd.replace(/'/g, '"'));
+          // var c = Object.keys(b);
+          // var res = c.map((i) => Number(i));
+
           // var res = c.map(function (v) {
           //   return parseInt(v, 10);
           // });
           // setkart takes integers
 
-          kartLoop = res;
-          setKartCount(kartLoop, b);
-          break;
+          // kartLoop = res;
+          // setKartCount(kartLoop, b);
+          // break;
         }
       }
     } else if (response.statusText === "Unauthorized") {
