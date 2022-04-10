@@ -12,7 +12,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
   let { user } = useContext(AuthContext);
   console.log("kartDates", kartDates);
 
-  if (kartDates === "empty") {
+  if (Object.keys(kartDates).length === 0) {
     navigate("/");
   }
 
