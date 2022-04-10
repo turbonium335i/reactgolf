@@ -343,7 +343,8 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               defaultValue="010-0000-0000"
             />{" "}
             {/* 가맹점 정보 설정*/}
-            <input type="hidden" name="site_cd" defaultValue="T0000" />
+            {/* <input type="hidden" name="site_cd" defaultValue="T0000" /> */}
+            <input type="hidden" name="site_cd" defaultValue="AHNJI" />
             <input
               type="hidden"
               name="site_name"
