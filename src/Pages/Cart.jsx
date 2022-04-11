@@ -139,6 +139,8 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
     submitMobile();
   }
 
+  var shippingFee = 0;
+
   return (
     <div className="container">
       <Table striped bordered hover variant="light">
@@ -201,7 +203,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
       <div className="d-flex justify-content-end gap-2">
         <Link to={`/productbydate`}>
           <Button variant="secondary" size="lg">
-            &#8592; Continue Shopping
+            &#8592; 쇼핑 계속하기
           </Button>{" "}
         </Link>
 
@@ -232,19 +234,30 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             prefix={"₩"}
           />
         </h5>
-        <h5>
+        {/* <h5>
           Shipping:{" "}
           <NumberFormat
-            value="6000"
+            value={shippingFee}
             displayType={"text"}
             thousandSeparator={true}
             prefix={"₩"}
           />{" "}
+        </h5> */}
+        <h5>
+          Open Event 무료배송:{" "}
+          <del className="text-success">
+            <NumberFormat
+              value={6000}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"₩"}
+            />
+          </del>{" "}
         </h5>
         <h3>
           Total:{" "}
           <NumberFormat
-            value={subTotal + 6000}
+            value={subTotal + shippingFee}
             displayType={"text"}
             thousandSeparator={true}
             prefix={"₩"}
@@ -285,7 +298,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input
               type="text"
               name="good_mny"
-              value={subTotal + 6000}
+              value={subTotal + shippingFee}
               readOnly
               maxLength={9}
               className="border  border-light"
@@ -331,7 +344,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
             <input
               type="text"
               name="address"
-              placeholder="Enter Shipping Address Here"
+              placeholder="배송 주소 입력"
               className="form-control"
               id="f_shipping"
             />{" "}
