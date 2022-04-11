@@ -123,7 +123,7 @@ const Profile = ({ setKartCount }) => {
       </p>
       <span className="text-primary "> {user.username}'s Profile</span>
       {loading ? (
-        <h1 className="text-primary">Loading History...</h1>
+        <h1 className="text-primary">Loading Profile...</h1>
       ) : (
         <div>
           <h1 className="text-dark">
@@ -133,7 +133,7 @@ const Profile = ({ setKartCount }) => {
           <hr />
         </div>
       )}
-      {orderJ &&
+      {orderJ ? (
         orderJ.map((item, index) => {
           if (item.customerUsername === user.username) {
             return (
@@ -162,7 +162,10 @@ const Profile = ({ setKartCount }) => {
               </div>
             );
           }
-        })}
+        })
+      ) : (
+        <h1>Order History Loading...</h1>
+      )}{" "}
     </div>
   );
 };
