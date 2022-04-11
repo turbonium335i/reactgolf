@@ -312,7 +312,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
               maxLength={40}
             />{" "}
             <label htmlFor="good_name"> </label> <br />
-            <input type="hidden" name="good_name" defaultValue="온웨어 골프" />
+            <input type="hidden" name="good_name" defaultValue="OnWear GOLF" />
             <label htmlFor="buyr_name">Name:</label> <br />
             <input
               type="text"
