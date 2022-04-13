@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import NumberFormat from "react-number-format";
+import { BsPersonCircle } from "react-icons/bs";
 
 const Cart = ({ items, kart, onDelete, kartDates }) => {
   var shopKart = [];
@@ -273,153 +274,176 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
         />
       </div>
       <div className="text-center fw-bold">Payment & Shipping Information</div>
-      <form
-        name="order_info"
-        method="post"
-        action="https://pertinacity1.pythonanywhere.com/payprocess"
-        id="paypay"
-        encType="multipart/form-data"
-      >
-        {" "}
-        <div className="d-flex justify-content-center">
-          <div className="  row px-3 w-75 align-center">
-            {" "}
-            <label
-              htmlFor="pay_method"
-              className="  text-success fw-bold"
-            ></label>{" "}
-            {/* 신용카드 */}
-            <input
-              type="hidden"
-              name="pay_method"
-              defaultValue={100000000000}
-            />
-            <label htmlFor="good_mny"> </label>
-            <input
-              type="text"
-              name="good_mny"
-              value={subTotal + shippingFee}
-              readOnly
-              maxLength={9}
-              className="border  border-light"
-            />{" "}
-            <br />
-            <label htmlFor="ordr_idxx"> </label> <br />
-            <input
-              type="hidden"
-              name="ordr_idxx"
-              defaultValue="ONWEAR1001"
-              maxLength={40}
-            />{" "}
-            <label htmlFor="good_name"> </label> <br />
-            <input type="hidden" name="good_name" defaultValue="OnWear GOLF" />
-            <label htmlFor="buyr_name">Name:</label> <br />
-            <input
-              type="text"
-              name="buyr_name"
-              placeholder="Enter Name Here"
-              className="form-control"
-              id="f_name"
-            />{" "}
-            <br />
-            <label htmlFor="buyr_tel1">Phone:</label> <br />
-            <input
-              type="text"
-              name="buyr_tel1"
-              placeholder="010-0000-0000"
-              className="form-control"
-              id="f_phone"
-            />{" "}
-            <br />
-            <label htmlFor="buyr_mail">Email:</label> <br />
-            <input
-              type="text"
-              name="buyr_mail"
-              placeholder="email@email.com"
-              className="form-control"
-              id="f_email"
-            />{" "}
-            <br />
-            <label htmlFor="address">Address:</label> <br />
-            <input
-              type="text"
-              name="address"
-              placeholder="배송 주소 입력"
-              className="form-control"
-              id="f_shipping"
-            />{" "}
-            <br />
-            <label htmlFor="buyr_tel2"> </label> <br />
-            <input
-              type="hidden"
-              name="buyr_tel2"
-              defaultValue="010-0000-0000"
-            />{" "}
-            {/* 가맹점 정보 설정*/}
-            {/* <input type="hidden" name="site_cd" defaultValue="T0000" /> */}
-            <input type="hidden" name="site_cd" defaultValue="AHNJI" />
-            <input
-              type="hidden"
-              name="site_name"
-              defaultValue="OnWear Premium"
-            />
-            {/* 인증데이터 처리*/}
-            <input type="hidden" name="res_cd" value="" />
-            <input type="hidden" name="res_msg" value="" />
-            <input type="hidden" name="enc_info" value="" />
-            <input type="hidden" name="enc_data" value="" />
-            <input type="hidden" name="ret_pay_method" value="" />
-            <input type="hidden" name="tran_cd" value="" />
-            <input type="hidden" name="use_pay_method" value="" />
-            <input type="hidden" name="userName" value={kartUserName} />
-            <input
-              type="hidden"
-              name="Ret_URL"
-              value="https://pertinacity1.pythonanywhere.com/order_mobile"
-            />
-            <input
-              type="hidden"
-              name="shopKart"
-              value={JSON.stringify(shopKart)}
-            />
-            <input
-              type="hidden"
-              name="kartDates"
-              value={JSON.stringify(kartDates)}
-            />
-            <div className="text-center">
+      {user ? (
+        <form
+          name="order_info"
+          method="post"
+          action="https://pertinacity1.pythonanywhere.com/payprocess"
+          id="paypay"
+          encType="multipart/form-data"
+        >
+          {" "}
+          <div className="d-flex justify-content-center">
+            <div className="  row px-3 w-75 align-center">
               {" "}
-              <Button
-                variant="outline-primary"
-                size="md"
-                onClick={() => {
-                  // checkForm();
-                  document.order_info.pay_method.value = 100000000000;
-                  document.order_info.action =
-                    "https://pertinacity1.pythonanywhere.com/payprocess";
-                  jsf__pay(document.order_info);
-                }}
-              >
-                PC 결제
-              </Button>
-              &nbsp;
-              <Button
-                variant="outline-success"
-                size="md"
-                onClick={() => {
-                  // checkForm();
-                  document.order_info.action =
-                    "https://pertinacity1.pythonanywhere.com/kcp_api_trade_reg";
-                  document.order_info.pay_method.value = "CARD";
-                  document.order_info.submit();
-                }}
-              >
-                Mobile 결제
-              </Button>
-            </div>
-          </div>{" "}
+              <label
+                htmlFor="pay_method"
+                className="  text-success fw-bold"
+              ></label>{" "}
+              {/* 신용카드 */}
+              <input
+                type="hidden"
+                name="pay_method"
+                defaultValue={100000000000}
+              />
+              <label htmlFor="good_mny"> </label>
+              <input
+                type="text"
+                name="good_mny"
+                value={subTotal + shippingFee}
+                readOnly
+                maxLength={9}
+                className="border  border-light"
+              />{" "}
+              <br />
+              <label htmlFor="ordr_idxx"> </label> <br />
+              <input
+                type="hidden"
+                name="ordr_idxx"
+                defaultValue="ONWEAR1001"
+                maxLength={40}
+              />{" "}
+              <label htmlFor="good_name"> </label> <br />
+              <input
+                type="hidden"
+                name="good_name"
+                defaultValue="OnWear GOLF"
+              />
+              <label htmlFor="buyr_name">Name:</label> <br />
+              <input
+                type="text"
+                name="buyr_name"
+                placeholder="Enter Name Here"
+                className="form-control"
+                id="f_name"
+              />{" "}
+              <br />
+              <label htmlFor="buyr_tel1">Phone:</label> <br />
+              <input
+                type="text"
+                name="buyr_tel1"
+                placeholder="010-0000-0000"
+                className="form-control"
+                id="f_phone"
+              />{" "}
+              <br />
+              <label htmlFor="buyr_mail">Email:</label> <br />
+              <input
+                type="text"
+                name="buyr_mail"
+                placeholder="email@email.com"
+                className="form-control"
+                id="f_email"
+              />{" "}
+              <br />
+              <label htmlFor="address">Address:</label> <br />
+              <input
+                type="text"
+                name="address"
+                placeholder="배송 주소 입력"
+                className="form-control"
+                id="f_shipping"
+              />{" "}
+              <br />
+              <label htmlFor="buyr_tel2"> </label> <br />
+              <input
+                type="hidden"
+                name="buyr_tel2"
+                defaultValue="010-0000-0000"
+              />{" "}
+              {/* 가맹점 정보 설정*/}
+              {/* <input type="hidden" name="site_cd" defaultValue="T0000" /> */}
+              <input type="hidden" name="site_cd" defaultValue="AHNJI" />
+              <input
+                type="hidden"
+                name="site_name"
+                defaultValue="OnWear Premium"
+              />
+              {/* 인증데이터 처리*/}
+              <input type="hidden" name="res_cd" value="" />
+              <input type="hidden" name="res_msg" value="" />
+              <input type="hidden" name="enc_info" value="" />
+              <input type="hidden" name="enc_data" value="" />
+              <input type="hidden" name="ret_pay_method" value="" />
+              <input type="hidden" name="tran_cd" value="" />
+              <input type="hidden" name="use_pay_method" value="" />
+              <input type="hidden" name="userName" value={kartUserName} />
+              <input
+                type="hidden"
+                name="Ret_URL"
+                value="https://pertinacity1.pythonanywhere.com/order_mobile"
+              />
+              <input
+                type="hidden"
+                name="shopKart"
+                value={JSON.stringify(shopKart)}
+              />
+              <input
+                type="hidden"
+                name="kartDates"
+                value={JSON.stringify(kartDates)}
+              />
+              <p className="text-center  small text-danger">
+                &#8594; 결제시 카드사 서버연결이 지연될 수 있으니 잠시만
+                기다려주십시오
+              </p>
+              <div className="text-center">
+                {" "}
+                <Button
+                  variant="outline-primary"
+                  size="md"
+                  onClick={() => {
+                    // checkForm();
+                    document.order_info.pay_method.value = 100000000000;
+                    document.order_info.action =
+                      "https://pertinacity1.pythonanywhere.com/payprocess";
+                    jsf__pay(document.order_info);
+                  }}
+                >
+                  PC 결제
+                </Button>
+                &nbsp;
+                <Button
+                  variant="outline-success"
+                  size="md"
+                  onClick={() => {
+                    // checkForm();
+                    document.order_info.action =
+                      "https://pertinacity1.pythonanywhere.com/kcp_api_trade_reg";
+                    document.order_info.pay_method.value = "CARD";
+                    document.order_info.submit();
+                  }}
+                >
+                  Mobile 결제
+                </Button>
+              </div>
+            </div>{" "}
+          </div>
+        </form>
+      ) : (
+        <div className="py-2">
+          <h5 className="text-center">
+            {" "}
+            <span className="text-success fw-bold">₩ &nbsp;</span>
+            주문 및 결제를 원하시면 로그인 해주세요
+          </h5>
+          <h1 className="text-center">
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              <BsPersonCircle className="text-success" /> Login
+            </Link>
+          </h1>
         </div>
-      </form>
+      )}
     </div>
   );
 };

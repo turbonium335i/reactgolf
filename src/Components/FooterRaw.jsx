@@ -79,7 +79,7 @@ const Footer = () => (
                 style={{ textDecoration: "none" }}
                 className="text-dark"
               >
-                Naver
+                Naver : on_wear@naver.com
               </a>
             </li>
           </ul>
