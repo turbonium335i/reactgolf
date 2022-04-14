@@ -70,7 +70,7 @@ const SignUp = ({ mstat, messageback }) => {
           } else {
             messageback("Account Created: " + api_userName);
             mstat();
-            // navigate("/login");
+            navigate("/login");
           }
         });
     } else {
