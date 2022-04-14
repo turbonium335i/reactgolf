@@ -102,19 +102,6 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
     }
   }
 
-  function checkForm() {
-    var fname = document.getElementById("f_name").value;
-    var fphone = document.getElementById("f_phone").value;
-    var femail = document.getElementById("f_email").value;
-    var fshipping = document.getElementById("f_shipping").value;
-
-    if (fname !== "" && fphone !== "" && femail !== "" && fshipping !== "") {
-      jsf__pay(document.order_info);
-    } else {
-      alert("Form Incomplete");
-    }
-  }
-
   function sendMobile() {
     let formData2 = new FormData(document.order_info);
 
@@ -319,7 +306,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 name="good_name"
                 defaultValue="OnWear GOLF"
               />
-              <label htmlFor="buyr_name">Name:</label> <br />
+              <label htmlFor="buyr_name">*Name:</label> <br />
               <input
                 type="text"
                 name="buyr_name"
@@ -328,7 +315,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 id="f_name"
               />{" "}
               <br />
-              <label htmlFor="buyr_tel1">Phone:</label> <br />
+              <label htmlFor="buyr_tel1">*Phone:</label> <br />
               <input
                 type="text"
                 name="buyr_tel1"
@@ -337,7 +324,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 id="f_phone"
               />{" "}
               <br />
-              <label htmlFor="buyr_mail">Email:</label> <br />
+              <label htmlFor="buyr_mail">*Email:</label> <br />
               <input
                 type="text"
                 name="buyr_mail"
@@ -346,7 +333,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 id="f_email"
               />{" "}
               <br />
-              <label htmlFor="address">Address:</label> <br />
+              <label htmlFor="address">*Address:</label> <br />
               <input
                 type="text"
                 name="address"
@@ -394,7 +381,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                 value={JSON.stringify(kartDates)}
               />
               <p className="text-center  small text-danger">
-                &#8594; 결제시 카드사 서버연결이 지연될 수 있으니 잠시만
+                &#8709; 결제시 카드사 서버연결이 지연될 수 있으니 잠시만
                 기다려주십시오
               </p>
               <div className="text-center">
@@ -403,11 +390,22 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                   variant="outline-primary"
                   size="md"
                   onClick={() => {
-                    // checkForm();
-                    document.order_info.pay_method.value = 100000000000;
-                    document.order_info.action =
-                      "https://pertinacity1.pythonanywhere.com/payprocess";
-                    jsf__pay(document.order_info);
+                    var fname = document.getElementById("f_name").value;
+                    var fphone = document.getElementById("f_phone").value;
+                    var femail = document.getElementById("f_email").value;
+                    var fshipping = document.getElementById("f_shipping").value;
+
+                    if (
+                      fname !== "" &&
+                      fphone !== "" &&
+                      femail !== "" &&
+                      fshipping !== ""
+                    ) {
+                      document.order_info.pay_method.value = 100000000000;
+                      document.order_info.action =
+                        "https://pertinacity1.pythonanywhere.com/payprocess";
+                      jsf__pay(document.order_info);
+                    }
                   }}
                 >
                   PC 결제
@@ -417,11 +415,22 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
                   variant="outline-success"
                   size="md"
                   onClick={() => {
-                    // checkForm();
-                    document.order_info.action =
-                      "https://pertinacity1.pythonanywhere.com/kcp_api_trade_reg";
-                    document.order_info.pay_method.value = "CARD";
-                    document.order_info.submit();
+                    var fname = document.getElementById("f_name").value;
+                    var fphone = document.getElementById("f_phone").value;
+                    var femail = document.getElementById("f_email").value;
+                    var fshipping = document.getElementById("f_shipping").value;
+
+                    if (
+                      fname !== "" &&
+                      fphone !== "" &&
+                      femail !== "" &&
+                      fshipping !== ""
+                    ) {
+                      document.order_info.action =
+                        "https://pertinacity1.pythonanywhere.com/kcp_api_trade_reg";
+                      document.order_info.pay_method.value = "CARD";
+                      document.order_info.submit();
+                    }
                   }}
                 >
                   Mobile 결제
