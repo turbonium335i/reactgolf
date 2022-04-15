@@ -11,7 +11,7 @@ const Cart = ({ items, kart, onDelete, kartDates }) => {
   const navigate = useNavigate();
 
   let { user } = useContext(AuthContext);
-  console.log("kartDates", kartDates);
+  // console.log("kartDates", kartDates);
 
   if (Object.keys(kartDates).length === 0) {
     navigate("/");

@@ -46,6 +46,7 @@ const SignUp = ({ mstat, messageback }) => {
       api_email.length > 6
     ) {
       console.log("data sent from front");
+      alert("Please Wait For a Response.");
 
       // fetch("http://127.0.0.1:8000/reactMakeUser", {
       fetch("https://pertinacity1.pythonanywhere.com/reactMakeUser", {
